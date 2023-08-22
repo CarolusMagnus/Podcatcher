@@ -495,7 +495,7 @@ void PodcatcherUI::deletePodcasts(int channelId)
 
 void PodcatcherUI::onStartStreaming(int channelId, int index)
 {
-    qDebug() << "Requested streaming of epsiode:" << channelId << index;
+    qDebug() << "Requested streaming of episode:" << channelId << index;
 
     PodcastChannel * channel = m_pManager.podcastChannel(channelId);
     if (!channel){

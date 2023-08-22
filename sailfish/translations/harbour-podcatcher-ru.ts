@@ -266,7 +266,7 @@
         <translation>Получение списка новых выпусков...</translation>
     </message>
     <message>
-        <source>Mark all espiodes as finished</source>
+        <source>Mark all episodes as finished</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -472,7 +472,7 @@
         <translation>Удалять ли выпуски старше указанного числа дней. 0 означает, что ничего удалять не надо.</translation>
     </message>
     <message>
-        <source>Save epsiodes on SD card</source>
+        <source>Save episodes on SD card</source>
         <translation>Сохранять выпуски на SD-карту</translation>
     </message>
     <message>

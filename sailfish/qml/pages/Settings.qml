@@ -150,7 +150,7 @@ Dialog {
 
             TextSwitch{
                 id: saveOnSD
-                text: qsTr("Save epsiodes on SD card")
+                text: qsTr("Save episodes on SD card")
             }
 
             ComboBox{

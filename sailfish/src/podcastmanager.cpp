@@ -58,7 +58,7 @@ PodcastManager::PodcastManager(QObject *parent) :
     connect(this, SIGNAL(podcastChannelReady(PodcastChannel*)),
             this, SLOT(savePodcastChannel(PodcastChannel*)));
 
-    connect(this,SIGNAL(podcastEpsiodeDownloadReady()),
+    connect(this,SIGNAL(podcastEpisodeDownloadReady()),
             this,SLOT(onPodcastEpisodeDownloadReady()));
 
     connect(m_networkManager, SIGNAL(networkSessionConnected()),
@@ -240,7 +240,7 @@ void PodcastManager::downloadPodcast(PodcastEpisode *episode)
 
     m_episodeDownloadQueue.append(episode);
     episode->setState(PodcastEpisode::QueuedState);
-    emit podcastEpsiodeDownloadReady();
+    emit podcastEpisodeDownloadReady();
     //executeNextDownload();
 }
 
@@ -1093,7 +1093,7 @@ void PodcastManager::compareEpisodes(QList<PodcastEpisode *> *list1, QList<Podca
         PodcastEpisode* e1 = list1->at(i);
         PodcastEpisode* e2 = list2->at(i);
 
-        qDebug() << "\nComparing Epsiode "<< e1->title() <<"\n";
+        qDebug() << "\nComparing Episode "<< e1->title() <<"\n";
 
         if(e1->title() != e2->title()){
             qWarning() << "Epsisodes have diffrent titles: "<< e1->title()<< "and"  << e2->title();

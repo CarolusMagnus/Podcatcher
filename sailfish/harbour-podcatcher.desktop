@@ -16,3 +16,7 @@ Name[de]=Podcatcher
 Permissions=Internet;Music;RemovableMedia;Audio
 OrganizationName=de.carmesinus
 ApplicationName=Podcatcher
+
+[X-HarbourBackup]
+BackupPathList=.config/de.carmesinus/Podcatcher/
+BackupConfigList=/apps/ControlPanel/Podcatcher/

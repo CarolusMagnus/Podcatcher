@@ -68,7 +68,7 @@ Page {
             }
 
             MenuItem {
-                text: qsTr("Mark all espiodes as finished")
+                text: qsTr("Mark all episodes as finished")
                 onClicked: {
                     appWindow.allFinished(channel.channelId);
                 }

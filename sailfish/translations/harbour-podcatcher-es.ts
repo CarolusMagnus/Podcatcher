@@ -313,7 +313,7 @@
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="71"/>
-        <source>Mark all espiodes as finished</source>
+        <source>Mark all episodes as finished</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -591,7 +591,7 @@
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="153"/>
-        <source>Save epsiodes on SD card</source>
+        <source>Save episodes on SD card</source>
         <translation>Guardar episodios en Tarjeta SD</translation>
     </message>
     <message>

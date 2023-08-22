@@ -83,7 +83,7 @@ signals:
     void podcastChannelReady(PodcastChannel *podcast);
     void podcastChannelSaved();
 
-    void podcastEpsiodeDownloadReady();
+    void podcastEpisodeDownloadReady();
 
     void podcastEpisodesRefreshed(QUrl podcastUrl);
 

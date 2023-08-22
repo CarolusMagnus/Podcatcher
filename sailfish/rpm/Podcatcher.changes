@@ -5,7 +5,7 @@
 * Tue Jun 7 Moritz Carmesin <carolus@carmesinus.de> 1.9.17
 - Sailjail compliance
 - Improved handling of SD cards (mounted at /run/media)
-- Highlight channels with new epsiodes
+- Highlight channels with new episodes
 
 * Sun May 1  Moritz Carmesin <carolus@carmesinus.de> 1.9.16
 - Introduce concepts of finished and new episodes
@@ -54,7 +54,7 @@
 - use taglib 2 (no “illegal” system library anymore)
 
 * Sun May 3 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.5
-- Disable epsiodes sorting to prevent crashes while downloading
+- Disable episodes sorting to prevent crashes while downloading
 
 * Wed Apr 8 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.4
 - Fix downloading status of channels
