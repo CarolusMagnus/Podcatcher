@@ -29,6 +29,9 @@
 #include "mediametadataextractor.h"
 //#include "podcastplaylist.h"
 
+struct EpisodeIndex {int channelID;
+                     int index;};
+
 class PodcatcherUI : QObject
 {
     Q_OBJECT
@@ -80,6 +83,7 @@ private slots:
     void onStreamingUrlResolved(const QString &streamUrl, const QString &streamTitle);
     void onAutoDownloadChanged(int channelId, bool autoDownload);
     void onMediaPlayerChanged();
+    void onEndOfMedium(const QString& name);
 
 
 private:
@@ -91,6 +95,7 @@ private:
     //PodcastPlaylist* m_playlist;
 
     QMap<QString, QString> logoCache;
+    QMap<QString, EpisodeIndex> indexCache;
     QQuickView* view;
 
     MGConfItem *m_mediaPlayerConf;

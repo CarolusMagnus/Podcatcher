@@ -41,6 +41,7 @@ ApplicationWindow
     signal startStreaming(int channelId, int index)
     signal autoDownloadChanged(int channelId, bool autoDownload)
     signal addToPlayList(int channelId, int index)
+    signal endOfMedium(string name)
 
     initialPage: Component { MainPage { } }
     //initialPage: player

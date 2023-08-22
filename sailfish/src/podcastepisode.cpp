@@ -234,9 +234,10 @@ void PodcastEpisode::downloadEpisode()
         return;
     }
 
-    if(downloadUrl.userName().isEmpty()){
+    if(downloadUrl.userName().isEmpty() && !m_user.isEmpty()){
         downloadUrl.setUserName(m_user);
         downloadUrl.setPassword(m_password);
+        qDebug()<< "Using credentials for " << m_user;
     }
 
     QNetworkRequest request;

@@ -22,7 +22,7 @@ import Sailfish.Silica 1.0
 import  org.nemomobile.configuration 1.0
 
 //import org.nemomobile.mpris 1.0
-import Amber.Mpris 1.0
+import Amber.Mpris 1.0 //Requires SailfishOS 4.3
 
 Page {
     id: playerPage
@@ -30,12 +30,14 @@ Page {
     signal playStream(string url, string title)
     signal playFile(string fileName)
     signal stopStream(string url)
+    signal endOfMedium(string url)
 
     property string title : mediaMetaDataExtractor.title
     property bool playing : audioPlayer.playbackState === Audio.PlayingState
     property bool paused: audioPlayer.playbackState === Audio.PausedState
     property bool active: paused || playing
     property bool waitForSeeking: false
+    property bool streaming: false
 
 
     ConfigurationValue{
@@ -106,6 +108,7 @@ Page {
             anchors.horizontalCenter: parent.horizontalCenter
             visible: Page.isLandscape ? false : true
             cache: false
+            fillMode: Image.PreserveAspectCrop
         }
 
 
@@ -322,10 +325,12 @@ Page {
         audioPlayer.source = url;
         playerPage.title = title;
         audioPlayer.play();
+        streaming = true;
     }
 
 
     onPlayFile: {
+        streaming = false;
 
         chapterPanel.hide(true);
 
@@ -411,6 +416,11 @@ Page {
             var statusNames= ["NoMedia", "Loading", "Loaded", "Buffering", "Stalled", "Buffered", "EndOfMedia", "InvalidMedia", "UnknownStatus"];
             console.log("Status changed: "+ statusNames[status])
             console.log("Playback position: "+ position);
+
+            if (statusNames[status]=="InvalidMedia" && Math.abs(position-duration)<1000){
+                console.log("End of medium!"+Math.abs(position-duration))
+                appWindow.endOfMedium(source);
+            }
         }
 
 

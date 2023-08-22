@@ -409,36 +409,48 @@
 <context>
     <name>SearchPodcasts</name>
     <message>
+        <source>gPodder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Apple</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Import podcasts from gPodder</source>
-        <translation>Импортировать подкасты из gPodder</translation>
+        <translation type="unfinished">Импортировать подкасты из gPodder</translation>
     </message>
     <message>
         <source>Add URL manually</source>
-        <translation>Добавить URL вручную</translation>
+        <translation type="unfinished">Добавить URL вручную</translation>
     </message>
     <message>
         <source>No podcasts found.</source>
-        <translation>Подкасты не найдены.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Search podcasts</source>
-        <translation>Поиск подкастов</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Keyword</source>
-        <translation>Ключевое слово</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search at</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add new podcast</source>
-        <translation>Новый подкаст</translation>
+        <translation type="unfinished">Новый подкаст</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Добавить</translation>
+        <translation type="unfinished">Добавить</translation>
     </message>
     <message>
         <source>Podcast RSS URL</source>
-        <translation>URL RSS-ленты подкаста</translation>
+        <translation type="unfinished">URL RSS-ленты подкаста</translation>
     </message>
 </context>
 <context>
@@ -488,14 +500,6 @@
         <translation>Назначенный системой</translation>
     </message>
     <message>
-        <source>Jolla Mediaplayer</source>
-        <translation>Стандартный проигрыватель Jolla</translation>
-    </message>
-    <message>
-        <source>Unplayer</source>
-        <translation>Unplayer</translation>
-    </message>
-    <message>
         <source>Show popular podcasts page</source>
         <translation>Показывать страницу популярных подкастов</translation>
     </message>
@@ -504,15 +508,15 @@
         <translation>Хранить непрослушанные выпуски</translation>
     </message>
     <message>
-        <source>Internal Player (Beta)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Sync feeds on startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Download podcast feeds on startup. This may take some time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal Player</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

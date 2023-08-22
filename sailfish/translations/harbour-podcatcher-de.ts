@@ -17,12 +17,12 @@
 <context>
     <name>AudioPlayer</name>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="88"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="90"/>
         <source>Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="285"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="288"/>
         <source>Chapters</source>
         <translation>Kapitel</translation>
     </message>
@@ -286,7 +286,7 @@
 <context>
     <name>PodcastEpisode</name>
     <message>
-        <location filename="../src/podcastepisode.cpp" line="253"/>
+        <location filename="../src/podcastepisode.cpp" line="254"/>
         <source>SD card not available! Make sure SD card is mounted and decrypted!</source>
         <translation>SD-Karte nicht verfügbar! Stelle sicher, dass sie eingehängt und entschlüsselt ist.</translation>
     </message>
@@ -469,32 +469,32 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="164"/>
+        <location filename="../src/podcatcherui.cpp" line="167"/>
         <source>Fetching channel information...</source>
         <translation>Lade Kanalinformationen …</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="239"/>
+        <location filename="../src/podcatcherui.cpp" line="242"/>
         <source>Podcast episode not found.  Make sure SD card is mounted and decrypted!</source>
         <translation>Episode nicht gefunden! Stelle sicher, dass die SD-Karte eingehängt und entschlüsselt ist!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="248"/>
+        <location filename="../src/podcatcherui.cpp" line="251"/>
         <source>Podcast episode not found.</source>
         <translation>Podcastfolge nicht gefunden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="262"/>
+        <location filename="../src/podcatcherui.cpp" line="265"/>
         <source>Mediaplayer program not found!</source>
         <translation>Mediaplayer-App nicht gefunden!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="278"/>
+        <location filename="../src/podcatcherui.cpp" line="281"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>Es tut mir leid. Der Audioplayer konnte nicht gestartet werden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="523"/>
+        <location filename="../src/podcatcherui.cpp" line="528"/>
         <source>Unable to stream podcast.</source>
         <translation>Podcast konnte nicht gestreamt werden.</translation>
     </message>
@@ -502,44 +502,61 @@
 <context>
     <name>SearchPodcasts</name>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="38"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="40"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="148"/>
+        <source>gPodder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="44"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="147"/>
+        <source>Apple</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="73"/>
         <source>Import podcasts from gPodder</source>
-        <translation>Podcasts von gPodder importieren</translation>
+        <translation type="unfinished">Podcasts von gPodder importieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="46"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="81"/>
         <source>Add URL manually</source>
-        <translation>URL manuell hinzufügen</translation>
+        <translation type="unfinished">URL manuell hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="69"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="104"/>
         <source>No podcasts found.</source>
-        <translation>Keine Podcasts gefunden.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="87"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="122"/>
         <source>Search podcasts</source>
-        <translation>Suche Podcasts</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="92"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="127"/>
         <source>Keyword</source>
-        <translation>Schlüsselwort</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="259"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="145"/>
+        <source>Search at</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="309"/>
         <source>Add new podcast</source>
-        <translation>Neuen Podcast hinzufügen</translation>
+        <translation type="unfinished">Neuen Podcast hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="260"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="310"/>
         <source>Add</source>
-        <translation>Hinzufügen</translation>
+        <translation type="unfinished">Hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="265"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="315"/>
         <source>Podcast RSS URL</source>
-        <translation>Podcast-RSS-URL</translation>
+        <translation type="unfinished">Podcast RSS URL</translation>
     </message>
 </context>
 <context>
@@ -610,22 +627,12 @@
         <translation>Systemstandard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="167"/>
-        <source>Jolla Mediaplayer</source>
-        <translation>Jolla Mediaplayer</translation>
+        <location filename="../qml/pages/Settings.qml" line="177"/>
+        <source>Internal Player</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="171"/>
-        <source>Unplayer</source>
-        <translation>Unplayer</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/Settings.qml" line="175"/>
-        <source>Internal Player (Beta)</source>
-        <translation>Interner Player (Bata)</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/Settings.qml" line="185"/>
+        <location filename="../qml/pages/Settings.qml" line="187"/>
         <source>Show popular podcasts page</source>
         <translation>Beliebte Podcasts anzeigen</translation>
     </message>

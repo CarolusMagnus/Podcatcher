@@ -17,12 +17,12 @@
 <context>
     <name>AudioPlayer</name>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="88"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="90"/>
         <source>Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="285"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="288"/>
         <source>Chapters</source>
         <translation type="unfinished"></translation>
     </message>
@@ -286,7 +286,7 @@
 <context>
     <name>PodcastEpisode</name>
     <message>
-        <location filename="../src/podcastepisode.cpp" line="253"/>
+        <location filename="../src/podcastepisode.cpp" line="254"/>
         <source>SD card not available! Make sure SD card is mounted and decrypted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -469,32 +469,32 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="164"/>
+        <location filename="../src/podcatcherui.cpp" line="167"/>
         <source>Fetching channel information...</source>
         <translation>正在获取频道信息…</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="239"/>
+        <location filename="../src/podcatcherui.cpp" line="242"/>
         <source>Podcast episode not found.  Make sure SD card is mounted and decrypted!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="248"/>
+        <location filename="../src/podcatcherui.cpp" line="251"/>
         <source>Podcast episode not found.</source>
         <translation>没有找到播客剧集。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="262"/>
+        <location filename="../src/podcatcherui.cpp" line="265"/>
         <source>Mediaplayer program not found!</source>
         <translation>没有找到媒体播放器。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="278"/>
+        <location filename="../src/podcatcherui.cpp" line="281"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>非常抱歉!无法为播客打开音频播放器。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="523"/>
+        <location filename="../src/podcatcherui.cpp" line="528"/>
         <source>Unable to stream podcast.</source>
         <translation>无法加载播客。</translation>
     </message>
@@ -502,44 +502,61 @@
 <context>
     <name>SearchPodcasts</name>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="38"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="40"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="148"/>
+        <source>gPodder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="44"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="147"/>
+        <source>Apple</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="73"/>
         <source>Import podcasts from gPodder</source>
-        <translation>从 gPodder 导入播客。</translation>
+        <translation type="unfinished">从 gPodder 导入播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="46"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="81"/>
         <source>Add URL manually</source>
-        <translation>手动添加 URL</translation>
+        <translation type="unfinished">手动添加 URL</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="69"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="104"/>
         <source>No podcasts found.</source>
-        <translation>没有找到播客。</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="87"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="122"/>
         <source>Search podcasts</source>
-        <translation>搜索播客</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="92"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="127"/>
         <source>Keyword</source>
-        <translation>关键词</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="259"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="145"/>
+        <source>Search at</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="309"/>
         <source>Add new podcast</source>
-        <translation>添加新播客</translation>
+        <translation type="unfinished">添加新播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="260"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="310"/>
         <source>Add</source>
-        <translation>添加</translation>
+        <translation type="unfinished">添加</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="265"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="315"/>
         <source>Podcast RSS URL</source>
-        <translation>播客 RSS URL</translation>
+        <translation type="unfinished">播客 RSS URL</translation>
     </message>
 </context>
 <context>
@@ -610,22 +627,12 @@
         <translation>系统默认</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="167"/>
-        <source>Jolla Mediaplayer</source>
-        <translation>Jolla 媒体播放器</translation>
+        <location filename="../qml/pages/Settings.qml" line="177"/>
+        <source>Internal Player</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="171"/>
-        <source>Unplayer</source>
-        <translation>Unplayer</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/Settings.qml" line="175"/>
-        <source>Internal Player (Beta)</source>
-        <translation>内部播放器（测试）</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/Settings.qml" line="185"/>
+        <location filename="../qml/pages/Settings.qml" line="187"/>
         <source>Show popular podcasts page</source>
         <translation>显示流行的播客页</translation>
     </message>

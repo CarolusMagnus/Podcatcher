@@ -115,6 +115,9 @@ PodcatcherUI::PodcatcherUI()
     connect(rootDeclarativeItem, SIGNAL(refreshEpisodes(int)),
             this, SLOT(onRefreshEpisodes(int)));
 
+    connect(rootDeclarativeItem, SIGNAL(endOfMedium(QString)),
+            this, SLOT(onEndOfMedium(QString)));
+
     m_autoSyncConf = new MGConfItem("/apps/ControlPanel/Podcatcher/autosync", this);
 
     if (m_autoSyncConf->value().toBool()){
@@ -278,6 +281,8 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
             emit showInfoBanner(tr("I am sorry! Could not launch audio player for this podcast."));
         }
     }else{
+        EpisodeIndex ei = {channelId, index};
+        indexCache.insert(episode->playFilename(), ei);
         emit playFileWithInternalPlayer(episode->playFilename());
     }
 }
@@ -540,6 +545,11 @@ void PodcatcherUI::onAutoDownloadChanged(int channelId, bool autoDownload)
 void PodcatcherUI::onMediaPlayerChanged(){
     m_mediaPlayerPath = m_mediaPlayerConf->value().toString();
     qDebug() << "Setting changed: Mediaplayer: " << m_mediaPlayerPath;
+}
+
+void PodcatcherUI::onEndOfMedium(const QString &name)
+{
+    qDebug()<< "Playing" << name << "ended";
 }
 
 void PodcatcherUI::importFromGPodder(const QString& username, const QString& password)

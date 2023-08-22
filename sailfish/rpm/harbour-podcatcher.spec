@@ -9,7 +9,7 @@ Name:       harbour-podcatcher
 # << macros
 
 Summary:    Your mobile podcast client for Sailfish OS
-Version:    2.0.0
+Version:    2.0.1
 Release:    1
 Group:      Qt/Qt
 License:    GPLV3
@@ -20,6 +20,8 @@ Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   qt5-qtdeclarative-import-xmllistmodel
 Requires:   sailfish-components-webview-qt5
 Requires:   amber-qml-plugin-mpris
+Requires:   qt5-qtqml-import-webkitplugin
+Requires:   qt5-qtqml-import-webkitplugin-experimental
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
