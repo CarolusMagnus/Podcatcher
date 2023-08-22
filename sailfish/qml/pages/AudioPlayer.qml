@@ -104,7 +104,7 @@ Page {
             width: parent.width/*+2*Theme.paddingMedium*/
             height: width
             anchors.horizontalCenter: parent.horizontalCenter
-            visible: true
+            visible: Page.isLandscape ? false : true
             cache: false
         }
 
@@ -385,7 +385,7 @@ Page {
             var infos = mpris.metadata;
             infos[Mpris.metadataToString(Mpris.Artist)] = [mediaMetaDataExtractor.artist]
             infos[Mpris.metadataToString(Mpris.Title)] = mediaMetaDataExtractor.title
-            mpris.metadata = infos;           
+            mpris.metadata = infos;
             */
 
 //            var artist = "";
