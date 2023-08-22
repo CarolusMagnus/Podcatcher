@@ -377,7 +377,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="282"/>
         <source>Downloading over mobile data</source>
-        <translation type="unfinished"></translation>
+        <translation>Laddar ner över mobilt nätverk</translation>
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="371"/>
