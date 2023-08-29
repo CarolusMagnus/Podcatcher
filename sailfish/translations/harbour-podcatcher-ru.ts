@@ -519,6 +519,10 @@
         <source>Internal Player</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Automatically play next episode in channel</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>URLEditDialog</name>

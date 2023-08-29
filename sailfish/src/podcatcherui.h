@@ -95,11 +95,14 @@ private:
     //PodcastPlaylist* m_playlist;
 
     QMap<QString, QString> logoCache;
-    QMap<QString, EpisodeIndex> indexCache;
+    //QMap<QString, EpisodeIndex> indexCache;
     QQuickView* view;
+
+    PodcastEpisode* m_playingEpisode;
 
     MGConfItem *m_mediaPlayerConf;
     MGConfItem *m_autoSyncConf;
+    MGConfItem *m_autoPlayNext;
     QString m_mediaPlayerPath;
 
     bool isDownloading();

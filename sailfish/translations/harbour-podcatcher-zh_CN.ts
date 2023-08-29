@@ -17,12 +17,12 @@
 <context>
     <name>AudioPlayer</name>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="90"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="91"/>
         <source>Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="288"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="289"/>
         <source>Chapters</source>
         <translation type="unfinished"></translation>
     </message>
@@ -469,27 +469,27 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="167"/>
+        <location filename="../src/podcatcherui.cpp" line="168"/>
         <source>Fetching channel information...</source>
         <translation>正在获取频道信息…</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="242"/>
+        <location filename="../src/podcatcherui.cpp" line="243"/>
         <source>Podcast episode not found.  Make sure SD card is mounted and decrypted!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="251"/>
+        <location filename="../src/podcatcherui.cpp" line="252"/>
         <source>Podcast episode not found.</source>
         <translation>没有找到播客剧集。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="265"/>
+        <location filename="../src/podcatcherui.cpp" line="266"/>
         <source>Mediaplayer program not found!</source>
         <translation>没有找到媒体播放器。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="281"/>
+        <location filename="../src/podcatcherui.cpp" line="282"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>非常抱歉!无法为播客打开音频播放器。</translation>
     </message>
@@ -562,82 +562,87 @@
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="95"/>
+        <location filename="../qml/pages/Settings.qml" line="101"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="106"/>
+        <location filename="../qml/pages/Settings.qml" line="112"/>
         <source>Auto-download podcasts</source>
         <translation>自动下载播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="107"/>
+        <location filename="../qml/pages/Settings.qml" line="113"/>
         <source>Should Podcatcher automatically download new episodes when the device is connected to the WiFi.</source>
         <translation>当设备连接到 WiFi 时，Podcatcher 会自动下载新剧集。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="113"/>
+        <location filename="../qml/pages/Settings.qml" line="119"/>
         <source>Episodes to auto-download</source>
         <translation>自动下载剧集</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="130"/>
+        <location filename="../qml/pages/Settings.qml" line="136"/>
         <source>Remove old episodes</source>
         <translation>移除旧剧集</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="114"/>
+        <location filename="../qml/pages/Settings.qml" line="120"/>
         <source>The number of podcast episodes that should be automatically downloaded.</source>
         <translation>将会自动下载播客剧集的编号。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="100"/>
+        <location filename="../qml/pages/Settings.qml" line="106"/>
         <source>Sync feeds on startup</source>
         <translation>启动时同步订阅</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="101"/>
+        <location filename="../qml/pages/Settings.qml" line="107"/>
         <source>Download podcast feeds on startup. This may take some time.</source>
         <translation>启动时下载播客订阅。这可能要花点时间。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="131"/>
+        <location filename="../qml/pages/Settings.qml" line="137"/>
         <source>Remove podcast episodes that are older than the number of days specified here. 0 means do not remove any.</source>
         <translation>移除指定天数之前的播客剧集。0表示请勿移除。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="153"/>
+        <location filename="../qml/pages/Settings.qml" line="159"/>
         <source>Save episodes on SD card</source>
         <translation>保存剧集到 SD 卡</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="158"/>
+        <location filename="../qml/pages/Settings.qml" line="164"/>
+        <source>Automatically play next episode in channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="169"/>
         <source>Use mediaplayer </source>
         <translation>使用媒体播放器</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="159"/>
+        <location filename="../qml/pages/Settings.qml" line="170"/>
         <source>Which external program should be used for playing the downloaded podcasts?</source>
         <translation>选择哪个软件来播放下载的播客?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="163"/>
+        <location filename="../qml/pages/Settings.qml" line="174"/>
         <source>System Default</source>
         <translation>系统默认</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="177"/>
+        <location filename="../qml/pages/Settings.qml" line="188"/>
         <source>Internal Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="187"/>
+        <location filename="../qml/pages/Settings.qml" line="198"/>
         <source>Show popular podcasts page</source>
         <translation>显示流行的播客页</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="147"/>
+        <location filename="../qml/pages/Settings.qml" line="153"/>
         <source>Keep unplayed episodes</source>
         <translation>保留未播放的剧集</translation>
     </message>

@@ -78,6 +78,12 @@ Dialog {
         defaultValue: 0
     }
 
+    ConfigurationValue{
+        id: playNextConf
+        key: "/apps/ControlPanel/Podcatcher/playNext"
+        defaultValue: 0
+    }
+
     SilicaFlickable{
         anchors.fill: parent
         contentWidth: parent.width
@@ -153,6 +159,11 @@ Dialog {
                 text: qsTr("Save episodes on SD card")
             }
 
+            TextSwitch{
+                id: playNext
+                text: qsTr("Automatically play next episode in channel")
+            }
+
             ComboBox{
                 id: mediaplayer
                 label: qsTr("Use mediaplayer ")
@@ -198,6 +209,7 @@ Dialog {
         mediaplayer.currentIndex = players.indexOf(mediaPlayerConf.value)
         showPopular.checked = showPopularConf.value;
         saveOnSD.checked = saveOnSDCardConf.value;
+        playNext.checked = playNextConf.value;
     }
 
     onAccepted: {
@@ -209,6 +221,7 @@ Dialog {
         mediaPlayerConf.value = players[mediaplayer.currentIndex];
         showPopularConf.value = showPopular.checked;
         saveOnSDCardConf.value = saveOnSD.checked;
+        playNextConf.value = playNext.checked;
     }
 
 

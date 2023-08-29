@@ -68,6 +68,9 @@ public:
     QList<PodcastEpisode *> undownloadedEpisodes(int maxUndownloadedEpisodes);
     QList<PodcastEpisode *> unplayedEpisodes();    
     QList<PodcastEpisode *> unfinishedEpisodes();
+    QList<PodcastEpisode *>  unfinishedDownloadedEpisodes();
+
+    PodcastEpisode* getNextEpisodeForPlayer(int index);
 
     void cleanOldEpisodes(int keepNumEpisodes, bool keepUnplayed);
     void removeAll();
@@ -76,6 +79,7 @@ public:
    Q_INVOKABLE void sortEpisodes();
 
     void sortEpisodes(QList<PodcastEpisode *> &episodes, const QString &sortBy, bool descending);
+
 
 signals:
     void episodeBeingDeleted(PodcastEpisode *episode);

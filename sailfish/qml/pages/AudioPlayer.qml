@@ -31,11 +31,12 @@ Page {
     signal playFile(string fileName)
     signal stopStream(string url)
     signal endOfMedium(string url)
+    signal pause()
 
     property string title : mediaMetaDataExtractor.title
     property bool playing : audioPlayer.playbackState === Audio.PlayingState
     property bool paused: audioPlayer.playbackState === Audio.PausedState
-    property bool active: paused || playing
+    property bool active: audioPlayer.source !== "" //paused || playing
     property bool waitForSeeking: false
     property bool streaming: false
 
@@ -106,7 +107,7 @@ Page {
             width: parent.width/*+2*Theme.paddingMedium*/
             height: width
             anchors.horizontalCenter: parent.horizontalCenter
-            visible: Page.isLandscape ? false : true
+            visible: playerPage.isLandscape ? false : true
             cache: false
             fillMode: Image.PreserveAspectCrop
         }
@@ -348,8 +349,13 @@ Page {
             audioPlayer.play();
         }else{
             audioPlayer.seek(lastPosition.value);
+            audioPlayer.pause();
             audioPlayer.play();
         }
+    }
+
+    onPause: {
+        audioPlayer.pause();
     }
 
     Audio {
@@ -417,7 +423,7 @@ Page {
             console.log("Status changed: "+ statusNames[status])
             console.log("Playback position: "+ position);
 
-            if (statusNames[status]=="InvalidMedia" && Math.abs(position-duration)<1000){
+            if (statusNames[status]=="InvalidMedia" && Math.abs(position-duration)<5000){
                 console.log("End of medium!"+Math.abs(position-duration))
                 appWindow.endOfMedium(source);
             }
@@ -426,13 +432,15 @@ Page {
 
         onSeekableChanged: {
             if (waitForSeeking){
-            console.log("Stop muted playback, since we now know the durations and can seek.")
-            audioPlayer.pause();
-            audioPlayer.muted=false;
-            waitForSeeking = false;
+                console.log("Stop muted playback, since we now know the durations and can seek.")
+                var wasNotPaused = audioPlayer.playbackState !== Audio.PausedState
+                audioPlayer.pause();
+                audioPlayer.muted=false;
+                waitForSeeking = false;
 
-            audioPlayer.seek(lastPosition.value);
-            audioPlayer.play();
+                audioPlayer.seek(lastPosition.value);
+                if (wasNotPaused)
+                    audioPlayer.play();
             }
         }
     }

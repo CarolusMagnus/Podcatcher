@@ -585,7 +585,10 @@ Item {
 
         onPlayFileWithInternalPlayer:{
             player.playFile(fileName);
-            pageStack.push(player);
+            //player.pause();
+            function isPlayer(x){return x==player;};
+            if (!pageStack.find(isPlayer))
+                pageStack.push(player);
         }
 
     }

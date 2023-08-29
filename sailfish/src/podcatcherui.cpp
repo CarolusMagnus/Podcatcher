@@ -27,7 +27,7 @@
 #include "podcastepisodesmodelfactory.h"
 #include "podcastglobals.h"
 
-PodcatcherUI::PodcatcherUI()
+PodcatcherUI::PodcatcherUI(): m_playingEpisode(nullptr)
 {
     view = SailfishApp::createView();
     m_channelsModel = m_pManager.podcastChannelsModel();
@@ -119,6 +119,7 @@ PodcatcherUI::PodcatcherUI()
             this, SLOT(onEndOfMedium(QString)));
 
     m_autoSyncConf = new MGConfItem("/apps/ControlPanel/Podcatcher/autosync", this);
+    m_autoPlayNext = new MGConfItem("/apps/ControlPanel/Podcatcher/playNext", this);
 
     if (m_autoSyncConf->value().toBool()){
         m_pManager.refreshAllChannels();   // Refresh all feeds and download new episodes.
@@ -281,8 +282,7 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
             emit showInfoBanner(tr("I am sorry! Could not launch audio player for this podcast."));
         }
     }else{
-        EpisodeIndex ei = {channelId, index};
-        indexCache.insert(episode->playFilename(), ei);
+        m_playingEpisode = episode;
         emit playFileWithInternalPlayer(episode->playFilename());
     }
 }
@@ -550,6 +550,38 @@ void PodcatcherUI::onMediaPlayerChanged(){
 void PodcatcherUI::onEndOfMedium(const QString &name)
 {
     qDebug()<< "Playing" << name << "ended";
+
+    QString fname = name;
+
+    if (fname.startsWith("file://")){
+        QUrl url = QUrl(name);
+        fname = url.toLocalFile();
+    }
+
+    if (m_playingEpisode){
+
+        PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*m_playingEpisode->channel());
+        if (episodesModel == nullptr) {
+            qWarning() << "Could not get episodes model.";
+            return;
+        }
+
+        qDebug() << "Found episode with title" << m_playingEpisode->title();
+
+        auto nextEpisode = episodesModel->getNextEpisodeForPlayer(episodesModel->episodes().indexOf(m_playingEpisode));
+
+        m_playingEpisode->setAsFinished();
+
+        if (nextEpisode && m_autoPlayNext->value().toBool()){
+            qDebug() << "Proposing next episode" << nextEpisode->title();
+
+            emit onPlayPodcast(nextEpisode->channelid(), episodesModel->episodes().indexOf(nextEpisode));
+        }
+
+
+    }else{
+        qDebug() << "Could not find corresponding episode!";
+    }
 }
 
 void PodcatcherUI::importFromGPodder(const QString& username, const QString& password)

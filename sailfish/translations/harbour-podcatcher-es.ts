@@ -17,12 +17,12 @@
 <context>
     <name>AudioPlayer</name>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="90"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="91"/>
         <source>Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="288"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="289"/>
         <source>Chapters</source>
         <translation type="unfinished"></translation>
     </message>
@@ -469,27 +469,27 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="167"/>
+        <location filename="../src/podcatcherui.cpp" line="168"/>
         <source>Fetching channel information...</source>
         <translation>Recopilando información del canal...</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="242"/>
+        <location filename="../src/podcatcherui.cpp" line="243"/>
         <source>Podcast episode not found.  Make sure SD card is mounted and decrypted!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="251"/>
+        <location filename="../src/podcatcherui.cpp" line="252"/>
         <source>Podcast episode not found.</source>
         <translation>Episodio de podcast no encontrado.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="265"/>
+        <location filename="../src/podcatcherui.cpp" line="266"/>
         <source>Mediaplayer program not found!</source>
         <translation>¡Reproductor no encontrado!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="281"/>
+        <location filename="../src/podcatcherui.cpp" line="282"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>¡Lo siento! No es posible abrir el reproductor para este podcast.</translation>
     </message>
@@ -562,82 +562,87 @@
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="95"/>
+        <location filename="../qml/pages/Settings.qml" line="101"/>
         <source>Settings</source>
         <translation>Ajustes</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="106"/>
+        <location filename="../qml/pages/Settings.qml" line="112"/>
         <source>Auto-download podcasts</source>
         <translation>Auto-descarga de podcasts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="107"/>
+        <location filename="../qml/pages/Settings.qml" line="113"/>
         <source>Should Podcatcher automatically download new episodes when the device is connected to the WiFi.</source>
         <translation>Podcatcher descargará automáticamente los nuevos episodios cuando el dispositivo se conecte a la WiFi.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="113"/>
+        <location filename="../qml/pages/Settings.qml" line="119"/>
         <source>Episodes to auto-download</source>
         <translation>Episodios en auto-descarga</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="130"/>
+        <location filename="../qml/pages/Settings.qml" line="136"/>
         <source>Remove old episodes</source>
         <translation>Eliminar episodios antiguos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="114"/>
+        <location filename="../qml/pages/Settings.qml" line="120"/>
         <source>The number of podcast episodes that should be automatically downloaded.</source>
         <translation>Número de episodios que se descargarán automáticamente.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="100"/>
+        <location filename="../qml/pages/Settings.qml" line="106"/>
         <source>Sync feeds on startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="101"/>
+        <location filename="../qml/pages/Settings.qml" line="107"/>
         <source>Download podcast feeds on startup. This may take some time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="131"/>
+        <location filename="../qml/pages/Settings.qml" line="137"/>
         <source>Remove podcast episodes that are older than the number of days specified here. 0 means do not remove any.</source>
         <translation>Borra los episodios con una antigüedad superior al número de días especificado aquí. 0 significa que no se borra nada.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="153"/>
+        <location filename="../qml/pages/Settings.qml" line="159"/>
         <source>Save episodes on SD card</source>
         <translation>Guardar episodios en Tarjeta SD</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="158"/>
+        <location filename="../qml/pages/Settings.qml" line="164"/>
+        <source>Automatically play next episode in channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="169"/>
         <source>Use mediaplayer </source>
         <translation>Usar reproductor </translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="159"/>
+        <location filename="../qml/pages/Settings.qml" line="170"/>
         <source>Which external program should be used for playing the downloaded podcasts?</source>
         <translation>¿Qué programa externo debe usarse para reproducir los podcasts descargados?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="163"/>
+        <location filename="../qml/pages/Settings.qml" line="174"/>
         <source>System Default</source>
         <translation>Predeterminado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="177"/>
+        <location filename="../qml/pages/Settings.qml" line="188"/>
         <source>Internal Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="187"/>
+        <location filename="../qml/pages/Settings.qml" line="198"/>
         <source>Show popular podcasts page</source>
         <translation>Mostrar podcasts populares</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="147"/>
+        <location filename="../qml/pages/Settings.qml" line="153"/>
         <source>Keep unplayed episodes</source>
         <translation>Conservar episodios sin reproducir</translation>
     </message>

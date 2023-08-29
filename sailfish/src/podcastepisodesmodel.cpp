@@ -400,6 +400,45 @@ QList<PodcastEpisode *> PodcastEpisodesModel::unfinishedEpisodes()
     return episodes;
 }
 
+QList<PodcastEpisode *> PodcastEpisodesModel::unfinishedDownloadedEpisodes()
+{
+    QList<PodcastEpisode *> episodes;
+
+    if (m_episodes.isEmpty()) {
+        return episodes;
+    }
+
+    for (auto episode : std::as_const(m_episodes)) {
+        if (!episode->finished() && !episode->playFilename().isEmpty()) {
+            episodes << episode;
+        }
+    }
+
+    return episodes;
+}
+
+PodcastEpisode *PodcastEpisodesModel::getNextEpisodeForPlayer(int lastIndex)
+{
+    qDebug() << "Getting next episode after " << lastIndex;
+    auto available = unfinishedDownloadedEpisodes();
+
+    int idx_avail = (lastIndex >= 0)? available.indexOf(m_episodes.at(lastIndex)): -1;
+
+    if  (available.length() > 0){
+        if (idx_avail == -1)
+            return available.first();
+
+        if (idx_avail == 0 && available.length() > 1)
+            return available.at(1);
+
+        if (idx_avail > 0)
+            return available.at(idx_avail -1);
+        }
+
+    return nullptr;
+
+}
+
 
 QList<PodcastEpisode *> PodcastEpisodesModel::episodes()
 {
