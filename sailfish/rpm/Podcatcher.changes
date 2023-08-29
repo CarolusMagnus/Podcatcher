@@ -1,4 +1,13 @@
-* Tue Aug 30 Moritz Carmesin <carolus@carmesinus.de> 1.9.18
+Tue Aug 29 2023 Moritz Carmesin <carolus@carmesinus.de> 2.0.2
+- Fix typos (@RTheren)
+- Updated Swedish translation (@eson57)
+- Optionally try to automatically load next episode of current channel into player
+
+Tue Jun 6 2023 Moritz Carmesin <carolus@carmesinus.de>  2.0.1
+- Fix QWebkit dependency for installation on fresh systems
+- Add podcast search at Apple
+
+* Tue Aug 30 2022 Moritz Carmesin <carolus@carmesinus.de> 1.9.18
 - Fix channel logo saving location
 - Show remorse dialog before downloading on mobile data
 
