@@ -93,6 +93,8 @@ signals:
     void podcastEpisodeDownloaded(PodcastEpisode *episode);
     void showInfoBanner(QString text);
     void downloadingPodcasts(bool downloading);
+    void refreshNextChannel();
+
 
 public slots:
     void cleanupEpisodes();     // This is a slot, since it is called from Podcatcher UI constructor with single shot timer.
@@ -125,6 +127,7 @@ private slots:
    void onSessionConnected();
    void onNetworkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility na);
    void onRequestFinished(QNetworkReply* reply);
+   void onRefreshNextChannel();
 
 private:
    //void executeNextDownload();
@@ -137,6 +140,7 @@ private:
    void updateAutoDLSettingsFromCache();
 
    void compareEpisodes(QList<PodcastEpisode*>* list1, QList<PodcastEpisode*>* list2);
+
 
    PodcastChannelsModel *m_channelsModel;
 
@@ -153,6 +157,8 @@ private:
    PodcastEpisodesModelFactory *m_episodeModelFactory;
    QMap<QString, PodcastChannel *> channelRequestMap;
 
+   int m_refreshing;
+   QList<PodcastChannel *> m_channelRefreshQueue;
    QList<PodcastEpisode *> m_episodeDownloadQueue;
    QList<PodcastEpisode *> m_currentEpisodeDownloads;
    //bool m_isDownloading;

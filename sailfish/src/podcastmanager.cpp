@@ -52,7 +52,8 @@ PodcastManager::PodcastManager(QObject *parent) :
     m_autodownloadNumSettings(1),
     m_keepNumEpisodesSettings(0),
     m_autodownloadOnSettings(false),
-    m_autoDelUnplayedSettings(false)
+    m_autoDelUnplayedSettings(false),
+    m_refreshing(0)
 {
 
     connect(this, SIGNAL(podcastChannelReady(PodcastChannel*)),
@@ -69,6 +70,9 @@ PodcastManager::PodcastManager(QObject *parent) :
 
     connect(m_networkManager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(onRequestFinished(QNetworkReply*)));
+
+    connect(this,SIGNAL(refreshNextChannel()),
+            this, SLOT(onRefreshNextChannel()));
 
     // Get the current settings values.
     qDebug() << "Current settings: ";
@@ -169,8 +173,11 @@ void PodcastManager::refreshAllChannels()
             qWarning() << "Got NULL episode!";
             break;
         }
-        refreshPodcastChannelEpisodes(channel, true);
+        //refreshPodcastChannelEpisodes(channel, true);
+        m_channelRefreshQueue.append(channel);
     }
+
+    emit refreshNextChannel();
 }
 
 
@@ -183,7 +190,6 @@ void PodcastManager::refreshPodcastChannelEpisodes(PodcastChannel *channel, bool
         return;
     }
 
-    channel->setIsRefreshing(true);
 
     qDebug() << "Forced to get new episode data from the network.";
 
@@ -200,6 +206,9 @@ void PodcastManager::refreshPodcastChannelEpisodes(PodcastChannel *channel, bool
         qWarning() << "Provided podcast channel URL is not valid.";
         return;
     }
+
+    channel->setIsRefreshing(true);
+    m_refreshing++ ;
 
     QNetworkRequest request;
     request.setRawHeader("User-Agent", "Podcatcher Podcast client");
@@ -453,6 +462,7 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
     if (channel == nullptr) {
         qWarning() << "Podcast channel from reply is NULL! Doing nothing.";
         reply->deleteLater();
+        emit refreshNextChannel();
         return;
     }
 
@@ -490,12 +500,16 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
     }
 
 
+
     if (reply->error() != QNetworkReply::NoError){
         emit showInfoBanner(reply->errorString());
         if(trial){
             channel->trialFailed();
         }
         reply->deleteLater();
+            m_refreshing--;
+            channel->setIsRefreshing(false);
+            emit refreshNextChannel();
         return;
     }
 
@@ -517,29 +531,33 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
     }
 
      savePodcastEpisodes(channel);
+     emit refreshNextChannel();
 }
 
 void PodcastManager::onPodcastEpisodesRequestError(QNetworkReply::NetworkError error)
 {
-    if (error != QNetworkReply::NoError) {
-        emit showInfoBanner(tr("Cannot refresh. Network error."));
-    }
-
-
     auto *reply = qobject_cast<QNetworkReply *>(sender());
 
     PodcastChannel *channel = channelForNetworkReply(reply);
     if (channel == nullptr) {
         qWarning() << "Podcast channel from reply is NULL! Doing nothing.";
         reply->deleteLater();
+        emit refreshNextChannel();
         return;
+    }
+
+    if (error != QNetworkReply::NoError) {
+        emit showInfoBanner(channel->title() + ": "+tr("Cannot refresh. Network error."));
     }
 
     if (reply->url() == channel->trialURL()){
         channel->trialFailed();
     }
 
+    m_refreshing--;
+
     channel->setIsRefreshing(false);
+    emit refreshNextChannel();
 }
 
 void PodcastManager::onPodcastEpisodesParsed()
@@ -576,6 +594,7 @@ void PodcastManager::onPodcastEpisodesParsed()
             downloadNewEpisodes(episodeModel->channel());
         }
     }
+    m_refreshing--;
     channel->setIsRefreshing(false);
 }
 
@@ -746,9 +765,19 @@ void PodcastManager::onPodcastEpisodeDownloadFailed(PodcastEpisode *episode)
         emit showInfoBanner(tr("Podcast episode download failed: ")+episode->errorMessage());
     }
 
+
+    bool otherDownloadfromChannel = false;
+
+    for (PodcastEpisode* other : std::as_const(m_currentEpisodeDownloads)) {
+        if (other->channelid() == episode->channelid()){
+            otherDownloadfromChannel = true;
+            break;
+        }
+    }
+
     //m_isDownloading = false;
     PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
-    channel->setIsDownloading(false);
+    channel->setIsDownloading(otherDownloadfromChannel);
     episode->setState(PodcastEpisode::GetState);
 
     //    if (m_episodeDownloadQueue.contains(episode)) {
@@ -1113,6 +1142,17 @@ void PodcastManager::compareEpisodes(QList<PodcastEpisode *> *list1, QList<Podca
 
     }
 
+}
+
+void PodcastManager::onRefreshNextChannel()
+{
+    qDebug() << "Channel refres queue has" << m_channelRefreshQueue.length() << "entries.";
+
+    if(!m_channelRefreshQueue.isEmpty() && m_refreshing < 2){
+        PodcastChannel *nextChannel = m_channelRefreshQueue.takeFirst();
+        qDebug() << "Refreshing next channel" << nextChannel->title();
+        refreshPodcastChannelEpisodes(nextChannel, true);
+    }
 }
 
 void PodcastManager::fetchSubscriptionsFromGPodder(const QString& gpodderUsername, const QString& gpodderPassword) {
