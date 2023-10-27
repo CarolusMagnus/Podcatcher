@@ -123,6 +123,12 @@ Page {
                     menu: ContextMenu {
                         id: contextMenu;
                         MenuItem {
+                            text: qsTr("Refresh")
+                            onClicked: {
+                                appWindow.refreshEpisodes(model.channelId);
+                            }
+                        }
+                        MenuItem {
                             text: qsTr("Mark all podcasts as played")
                             visible: unplayedEpisodes > 0
                             onClicked: {

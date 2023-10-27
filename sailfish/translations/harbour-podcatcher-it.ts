@@ -244,41 +244,46 @@
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="126"/>
+        <source>Refresh</source>
+        <translation>Aggiorna</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="132"/>
         <source>Mark all podcasts as played</source>
         <translation>Segna tutti i podcast come riprodotti</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="133"/>
+        <location filename="../qml/pages/MainPage.qml" line="139"/>
         <source>Remove subscription</source>
         <translation>Rimuovi iscrizione</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="135"/>
+        <location filename="../qml/pages/MainPage.qml" line="141"/>
         <source>Removing</source>
         <translation>Rimozione</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="277"/>
+        <location filename="../qml/pages/MainPage.qml" line="283"/>
         <source>About</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="285"/>
+        <location filename="../qml/pages/MainPage.qml" line="291"/>
         <source>Settings</source>
         <translation>Impostazioni</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="293"/>
+        <location filename="../qml/pages/MainPage.qml" line="299"/>
         <source>Add Podcast</source>
         <translation>Aggiungi podcast</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="303"/>
+        <location filename="../qml/pages/MainPage.qml" line="309"/>
         <source>Refresh all subscriptions</source>
         <translation>Aggiorna le iscrizioni</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="329"/>
+        <location filename="../qml/pages/MainPage.qml" line="335"/>
         <source>Fetching channel information...</source>
         <translation>Recupero informazioni canale...</translation>
     </message>
@@ -411,57 +416,57 @@
 <context>
     <name>PodcastManager</name>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="129"/>
+        <location filename="../src/podcastmanager.cpp" line="133"/>
         <source>Unable to add subscription from %1 …</source>
         <translation>Impossibile iscriversi a &apos;%1&apos;...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="138"/>
+        <location filename="../src/podcastmanager.cpp" line="142"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>Già iscritto a &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="332"/>
+        <location filename="../src/podcastmanager.cpp" line="341"/>
         <source>No data received.</source>
         <translation>Nessun dato ricevuto.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="363"/>
+        <location filename="../src/podcastmanager.cpp" line="372"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>Feed non valido. Impossibile iscriversi...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="525"/>
+        <location filename="../src/podcastmanager.cpp" line="550"/>
         <source>Cannot refresh. Network error.</source>
         <translation>Impossibile aggiornare. Errore di rete.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="558"/>
+        <location filename="../src/podcastmanager.cpp" line="576"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Feed non valido. Impossibile scaricare episodi da &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="746"/>
+        <location filename="../src/podcastmanager.cpp" line="765"/>
         <source>Podcast episode download failed: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1122"/>
+        <location filename="../src/podcastmanager.cpp" line="1162"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Autenticazione a gPodder.net richiesta.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1153"/>
+        <location filename="../src/podcastmanager.cpp" line="1193"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Credenziali gPodder.net non valide. Riprova.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1219"/>
+        <location filename="../src/podcastmanager.cpp" line="1259"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>Nessuna iscrizione trovata su gPodder.net</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1223"/>
+        <location filename="../src/podcastmanager.cpp" line="1263"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Scaricamento iscrizioni da gPodder.net...</translation>
     </message>

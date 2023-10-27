@@ -244,41 +244,46 @@
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="126"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="132"/>
         <source>Mark all podcasts as played</source>
         <translation>标记全部播客为已播放</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="133"/>
+        <location filename="../qml/pages/MainPage.qml" line="139"/>
         <source>Remove subscription</source>
         <translation>移除订阅</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="135"/>
+        <location filename="../qml/pages/MainPage.qml" line="141"/>
         <source>Removing</source>
         <translation>正在移除</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="277"/>
+        <location filename="../qml/pages/MainPage.qml" line="283"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="285"/>
+        <location filename="../qml/pages/MainPage.qml" line="291"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="293"/>
+        <location filename="../qml/pages/MainPage.qml" line="299"/>
         <source>Add Podcast</source>
         <translation>添加播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="303"/>
+        <location filename="../qml/pages/MainPage.qml" line="309"/>
         <source>Refresh all subscriptions</source>
         <translation>刷新全部订阅</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="329"/>
+        <location filename="../qml/pages/MainPage.qml" line="335"/>
         <source>Fetching channel information...</source>
         <translation>正在获取频道信息…</translation>
     </message>
@@ -411,57 +416,57 @@
 <context>
     <name>PodcastManager</name>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="129"/>
+        <location filename="../src/podcastmanager.cpp" line="133"/>
         <source>Unable to add subscription from %1 …</source>
         <translation>无法添加来自 %1 的订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="138"/>
+        <location filename="../src/podcastmanager.cpp" line="142"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>已订阅到 %1 </translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="332"/>
+        <location filename="../src/podcastmanager.cpp" line="341"/>
         <source>No data received.</source>
         <translation>无接受到的数据。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="363"/>
+        <location filename="../src/podcastmanager.cpp" line="372"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>播客订阅无效，无法添加订阅…</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="525"/>
+        <location filename="../src/podcastmanager.cpp" line="550"/>
         <source>Cannot refresh. Network error.</source>
         <translation>网络错误，无法刷新…</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="558"/>
+        <location filename="../src/podcastmanager.cpp" line="576"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>播客订阅无法，无法下载 %1 剧集</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="746"/>
+        <location filename="../src/podcastmanager.cpp" line="765"/>
         <source>Podcast episode download failed: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1122"/>
+        <location filename="../src/podcastmanager.cpp" line="1162"/>
         <source>gPodder.net authentication information required.</source>
         <translation>要求授权 gPodder.net 信息</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1153"/>
+        <location filename="../src/podcastmanager.cpp" line="1193"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>无法接受 gPodder.net 凭证，请重试。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1219"/>
+        <location filename="../src/podcastmanager.cpp" line="1259"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>没有从 gPodder.net 找到任何订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1223"/>
+        <location filename="../src/podcastmanager.cpp" line="1263"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>正在从 gPodder.net 获取订阅…</translation>
     </message>

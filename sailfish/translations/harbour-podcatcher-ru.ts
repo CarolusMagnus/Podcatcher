@@ -231,6 +231,10 @@
         <source>Fetching channel information...</source>
         <translation>Получение информации о каналах...</translation>
     </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Обновить</translation>
+    </message>
 </context>
 <context>
     <name>PodcastEpisode</name>
