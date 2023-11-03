@@ -27,6 +27,7 @@
 #include <QFutureWatcher>
 #include <QFutureSynchronizer>
 #include <QNetworkReply>
+#include <QAtomicInt>
 
 #include <QCoreApplication>
 
@@ -157,7 +158,7 @@ private:
    PodcastEpisodesModelFactory *m_episodeModelFactory;
    QMap<QString, PodcastChannel *> channelRequestMap;
 
-   int m_refreshing;
+   QAtomicInt m_refreshing;
    QList<PodcastChannel *> m_channelRefreshQueue;
    QList<PodcastEpisode *> m_episodeDownloadQueue;
    QList<PodcastEpisode *> m_currentEpisodeDownloads;

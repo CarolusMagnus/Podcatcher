@@ -446,27 +446,27 @@
         <translation>Poddflödet ogiltigt. Kan inte ladda ner avsnitt från &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="765"/>
+        <location filename="../src/podcastmanager.cpp" line="766"/>
         <source>Podcast episode download failed: </source>
         <translation>Kunde inte ladda ner poddavsnitt: </translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1162"/>
+        <location filename="../src/podcastmanager.cpp" line="1163"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Inloggningsuppgifter för gPodder.net krävs.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1193"/>
+        <location filename="../src/podcastmanager.cpp" line="1194"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Inloggningsuppgifterna för gPodder.net, accepterades inte. Försök igen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1259"/>
+        <location filename="../src/podcastmanager.cpp" line="1260"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>Inga prenumerationer från gPodder.net hittades</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1263"/>
+        <location filename="../src/podcastmanager.cpp" line="1264"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Hämtar prenumerationer från gPodder.net...</translation>
     </message>

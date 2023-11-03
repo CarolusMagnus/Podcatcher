@@ -507,9 +507,9 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
             channel->trialFailed();
         }
         reply->deleteLater();
-            m_refreshing--;
-            channel->setIsRefreshing(false);
-            emit refreshNextChannel();
+        m_refreshing--;
+        channel->setIsRefreshing(false);
+        emit refreshNextChannel();
         return;
     }
 
@@ -596,6 +596,7 @@ void PodcastManager::onPodcastEpisodesParsed()
     }
     m_refreshing--;
     channel->setIsRefreshing(false);
+    emit refreshNextChannel();
 }
 
 void PodcastManager::onPodcastEpisodeDownloadReady()
@@ -1146,9 +1147,9 @@ void PodcastManager::compareEpisodes(QList<PodcastEpisode *> *list1, QList<Podca
 
 void PodcastManager::onRefreshNextChannel()
 {
-    qDebug() << "Channel refres queue has" << m_channelRefreshQueue.length() << "entries.";
+    qDebug() << "Channel refresh queue has" << m_channelRefreshQueue.length() << "entries.";
 
-    if(!m_channelRefreshQueue.isEmpty() && m_refreshing < 2){
+    if(!m_channelRefreshQueue.isEmpty() && m_refreshing < 3){
         PodcastChannel *nextChannel = m_channelRefreshQueue.takeFirst();
         qDebug() << "Refreshing next channel" << nextChannel->title();
         refreshPodcastChannelEpisodes(nextChannel, true);
