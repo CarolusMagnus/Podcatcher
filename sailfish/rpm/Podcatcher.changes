@@ -1,3 +1,9 @@
+Tue Jan 23 2024 Moritz Carmesin <carolus@carmesinus.de> 2.0.3
+- Updated Swedish translation (@eson57)
+- Remove deprecated WebKit dependency
+- Bugfixes
+- Only 2 parallel downloads
+
 Tue Aug 29 2023 Moritz Carmesin <carolus@carmesinus.de> 2.0.2
 - Fix typos (@RTheren)
 - Updated Swedish translation (@eson57)

@@ -1,6 +1,6 @@
 Name: harbour-podcatcher
 Summary: Your mobile podcast client for Sailfish OS
-Version: 2.0.2
+Version: 2.0.3
 Release: 1
 # The contents of the Group field should be one of the groups listed here:
 # http://gitorious.org/meego-developer-tools/spectacle/blobs/master/data/GROUPS
@@ -34,12 +34,12 @@ Requires:
 #  - nemo-qml-plugin-configuration-qt5
   - qt5-qtdeclarative-import-xmllistmodel
 #  - qtmozembed-qt5
-  - sailfish-components-webview-qt5
+#  - sailfish-components-webview-qt5
 #- sailfish-components-webview-qt5-popups
 #- sailfish-components-webview-qt5-pickers
   - amber-qml-plugin-mpris
-  - qt5-qtqml-import-webkitplugin
-  - qt5-qtqml-import-webkitplugin-experimental
+#  - qt5-qtqml-import-webkitplugin
+#  - qt5-qtqml-import-webkitplugin-experimental
 
 # All installed files
 Files:

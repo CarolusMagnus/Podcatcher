@@ -149,9 +149,9 @@
 <context>
     <name>EpisodeDescriptionPage</name>
     <message>
-        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="104"/>
+        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="105"/>
         <source>Published: </source>
-        <translation>Veröffentlicht: </translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
