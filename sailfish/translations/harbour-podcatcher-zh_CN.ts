@@ -17,12 +17,12 @@
 <context>
     <name>AudioPlayer</name>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="91"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="92"/>
         <source>Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="289"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="290"/>
         <source>Chapters</source>
         <translation type="unfinished"></translation>
     </message>
