@@ -39,6 +39,7 @@ Page {
     property bool active: audioPlayer.source !== "" //paused || playing
     property bool waitForSeeking: false
     property bool streaming: false
+    property bool previouslyPlayed: false
 
 
     ConfigurationValue{
@@ -321,6 +322,7 @@ Page {
 
 
     onPlayStream: {
+        previouslyPlayed=false;
         chapterPanel.hide(true);
         audioPlayer.pause();
         audioPlayer.source = url;
@@ -332,6 +334,7 @@ Page {
 
     onPlayFile: {
         streaming = false;
+        previouslyPlayed=false;
 
         chapterPanel.hide(true);
 
@@ -366,6 +369,7 @@ Page {
             console.log("Current position: "+position)
             console.log("Total duration" + duration)
             mpris.playbackStatus = Mpris.Playing
+            previouslyPlayed=true;
         }
 
         onPaused: {
@@ -378,6 +382,10 @@ Page {
 
         onStopped: {
             mpris.playbackStatus = Mpris.Stopped
+
+            if (previouslyPlayed){
+                appWindow.endOfMedium(source);
+            }
 
             /*
             We cannot save the position since it is already cleared
@@ -423,10 +431,10 @@ Page {
             console.log("Status changed: "+ statusNames[status])
             console.log("Playback position: "+ position);
 
-            if (statusNames[status]=="InvalidMedia" && Math.abs(position-duration)<5000){
+            /*if (statusNames[status]=="InvalidMedia" && duration-position<5000){
                 console.log("End of medium!"+Math.abs(position-duration))
-                appWindow.endOfMedium(source);
-            }
+                //appWindow.endOfMedium(source);
+            }*/
         }
 
 
