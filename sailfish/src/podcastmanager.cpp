@@ -1149,7 +1149,7 @@ void PodcastManager::onRefreshNextChannel()
 {
     qDebug() << "Channel refresh queue has" << m_channelRefreshQueue.length() << "entries.";
 
-    if(!m_channelRefreshQueue.isEmpty() && m_refreshing < 3){
+    if(!m_channelRefreshQueue.isEmpty() && m_refreshing < 2){
         PodcastChannel *nextChannel = m_channelRefreshQueue.takeFirst();
         qDebug() << "Refreshing next channel" << nextChannel->title();
         refreshPodcastChannelEpisodes(nextChannel, true);
