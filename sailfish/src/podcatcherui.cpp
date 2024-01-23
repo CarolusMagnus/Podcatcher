@@ -571,6 +571,7 @@ void PodcatcherUI::onEndOfMedium(const QString &name)
         auto nextEpisode = episodesModel->getNextEpisodeForPlayer(episodesModel->episodes().indexOf(m_playingEpisode));
 
         m_playingEpisode->setAsFinished();
+        episodesModel->refreshEpisode(m_playingEpisode);
 
         if (nextEpisode && m_autoPlayNext->value().toBool()){
             qDebug() << "Proposing next episode" << nextEpisode->title();
