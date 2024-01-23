@@ -18,7 +18,7 @@
  */
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtWebKit 3.0
+//import QtWebKit 3.0
 
 Page {
 
@@ -55,7 +55,7 @@ Page {
 
     onEpisodeDescriptionTextChanged: {
         console.log("Loading html: "+episodeDescriptionText);
-        episodeDescription.loadHtml(style + episodeDescriptionText);
+        //episodeDescription.loadHtml(style + episodeDescriptionText);
         //console.log(findAllMethods(episodeDescription._webPage));
         //console.log(all_properties(episodeDescription._webPage));
     }
@@ -63,6 +63,7 @@ Page {
 
     SilicaFlickable{
         anchors.fill: parent
+        contentHeight: mainPageTitle.height + podcastEpisodeRect.height+ episodeDescription.height + sep.height + 4*Theme.paddingMedium
 
         Column {
             id: episodesPageColumn
@@ -113,7 +114,36 @@ Page {
                 width: parent.width
             }
 
-            SilicaWebView {
+
+            Label{
+                id: episodeDescription
+
+                text: episodeDescriptionText
+                textFormat: Text.RichText
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeSmall
+
+                padding: Theme.paddingMedium
+
+                width: parent.width
+                height: Text.paintedHeight
+
+                onLinkActivated: {
+                    console.log(link);
+                    if (link != "about:blank"){
+                        //request.action = WebView.IgnoreRequest;
+                        Qt.openUrlExternally(link);
+                    }else{
+                        //request.action = WebView.AcceptRequest;
+                    }
+                }
+
+
+                //height: parent.height - mainPageTitle.height -  podcastEpisodeRect.height - 3*Theme.paddingMedium - sep.height
+
+            }
+
+            /*SilicaWebView {
                 id: episodeDescription
 
                 width: parent.width
@@ -141,7 +171,7 @@ Page {
                 VerticalScrollDecorator{
                 }
 
-            }
+            }*/
 
         }
     }
