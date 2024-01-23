@@ -19,12 +19,12 @@
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="91"/>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Spelare</translation>
     </message>
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="289"/>
         <source>Chapters</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapitel</translation>
     </message>
 </context>
 <context>
@@ -510,58 +510,58 @@
         <location filename="../qml/pages/SearchPodcasts.qml" line="40"/>
         <location filename="../qml/pages/SearchPodcasts.qml" line="148"/>
         <source>gPodder</source>
-        <translation type="unfinished"></translation>
+        <translation>gPodder</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="44"/>
         <location filename="../qml/pages/SearchPodcasts.qml" line="147"/>
         <source>Apple</source>
-        <translation type="unfinished"></translation>
+        <translation>Apple</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="73"/>
         <source>Import podcasts from gPodder</source>
-        <translation type="unfinished">Importera poddar från gPodder</translation>
+        <translation>Importera poddar från gPodder</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="81"/>
         <source>Add URL manually</source>
-        <translation type="unfinished">Lägg till URL manuellt</translation>
+        <translation>Lägg till URL manuellt</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="104"/>
         <source>No podcasts found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga poddar hittades.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="122"/>
         <source>Search podcasts</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök poddar</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="127"/>
         <source>Keyword</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyckelord</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="145"/>
         <source>Search at</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök på</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="309"/>
         <source>Add new podcast</source>
-        <translation type="unfinished">Lägg till ny podd</translation>
+        <translation>Lägg till ny podd</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="310"/>
         <source>Add</source>
-        <translation type="unfinished">Lägg till</translation>
+        <translation>Lägg till</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="315"/>
         <source>Podcast RSS URL</source>
-        <translation type="unfinished">URL för podd-RSS</translation>
+        <translation>URL för podd-RSS</translation>
     </message>
 </context>
 <context>
@@ -619,7 +619,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="164"/>
         <source>Automatically play next episode in channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Spela nästa avsnitt i kanalen automatiskt</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="169"/>
@@ -639,7 +639,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="188"/>
         <source>Internal Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Intern spelare</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="198"/>
