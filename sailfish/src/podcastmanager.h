@@ -48,6 +48,7 @@ public:
     explicit PodcastManager(QObject *parent = nullptr);
 
     PodcastChannelsModel* podcastChannelsModel() const;
+     PodcastChannelsModel* podcastChannelArchiveModel() const;
 
     /**
      * Request that the PodcastManager retrieves a new podcast stream
@@ -69,6 +70,7 @@ public:
 
     PodcastChannel* podcastChannel(int channelId);
     void removePodcastChannel(PodcastChannel &channel);
+    void movePodcastChannel(PodcastChannel &channel, bool toArchive);
 
     void downloadPodcast(PodcastEpisode *episode);
     void cancelDownloadPodcast(PodcastEpisode *episode);
@@ -144,6 +146,7 @@ private:
 
 
    PodcastChannelsModel *m_channelsModel;
+   PodcastChannelsModel *m_channelArchiveModel;
 
    // We need multiple QNAMs to be able to do concurrent downloads.
    QNetworkAccessManager *m_networkManager;

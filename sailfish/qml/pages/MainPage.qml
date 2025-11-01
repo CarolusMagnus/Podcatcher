@@ -145,6 +145,16 @@ Page {
                                                        });
                             }
                         }
+                        MenuItem {
+                            text: qsTr("Move to archive");
+                            onClicked: {
+                                channelRemorse.execute(listItem,qsTr("Archiving"),
+                                                       function(){
+                                                           console.log("Going to archive Channel "+model.channelId+"!");
+                                                           appWindow.archiveChannel(model.channelId);
+                                                       });
+                            }
+                        }
                     }
 
                     RemorseItem{
@@ -294,6 +304,13 @@ Page {
                 }
             }
 
+
+            MenuItem {
+                text: qsTr("Archive")
+                onClicked: {
+                    openFile("ArchivePage.qml");
+                }
+            }
 
             MenuItem {
                 text: qsTr("Add Podcast")

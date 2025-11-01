@@ -64,7 +64,7 @@ signals:
 public slots:
 
 private slots:
-    void onShowChannel(const QString &channelId);
+    void onShowChannel(int channelId);
     void onRefreshEpisodes(int channelId);
     void onDownloadPodcast(int channelId, int index);
     void onPlayPodcast(int channelId, int index);
@@ -72,9 +72,11 @@ private slots:
     void onDownloadingPodcast(bool isDownloading);
     void onCancelDownload(int channelId, int index);
     void onCancelQueueing(int channelId, int index);
-    void onDeleteChannel(const QString &channelId);
-    void onAllListened(const QString &channelId);
-    void onAllFinished(const QString &channelId);
+    void onDeleteChannel(int channelId);
+    void onArchiveChannel(int channelId);
+    void onUnarchiveChannel(int channelId);
+    void onAllListened(int channelId);
+    void onAllFinished(int channelId);
     void onDeletePodcast(int channelId, int index);
     void onMarkAsUnplayed(int channelId, int index);
     void onMarkAsFinished(int channelId, int index);
@@ -90,6 +92,7 @@ private:
     PodcastManager m_pManager;
     MediaMetaDataExtractor m_mMDE;
     PodcastChannelsModel *m_channelsModel;
+    PodcastChannelsModel *m_channelArchiveModel;
     PodcastChapterModel *m_chapterModel;
     PodcastEpisodesModelFactory *modelFactory;
     //PodcastPlaylist* m_playlist;
@@ -106,6 +109,9 @@ private:
     QString m_mediaPlayerPath;
 
     bool isDownloading();
+
+    //PodcastChannel* getChannelForID(int ID);
+
 };
 
 #endif // PODCATCHERUI_H

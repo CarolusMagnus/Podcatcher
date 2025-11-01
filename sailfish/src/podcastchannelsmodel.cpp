@@ -20,7 +20,7 @@
 #include "podcastchannelsmodel.h"
 #include "dbhelper.h"
 
-PodcastChannelsModel::PodcastChannelsModel(QObject *parent) :
+PodcastChannelsModel::PodcastChannelsModel(QObject *parent, bool archived) :
     QAbstractListModel(parent)
 {
     m_roles[ChannelIdRole] = "channelId";
@@ -42,7 +42,7 @@ PodcastChannelsModel::PodcastChannelsModel(QObject *parent) :
 
     m_sqlmanager->migrateChannelLogos();
 
-    foreach(PodcastChannel *channel, m_sqlmanager->channelsInDB()) {
+    foreach(PodcastChannel *channel, m_sqlmanager->channelsInDB(archived)) {
         connect(channel, SIGNAL(channelChanged()),
                 this, SLOT(onChannelChanged()));
 
@@ -121,6 +121,7 @@ bool channelsLessThan(const PodcastChannel *c1, const PodcastChannel *c2)
     return *c1 < *c2;
 }
 
+
 bool PodcastChannelsModel::addChannel(PodcastChannel *channel)
 {
      if (m_sqlmanager->podcastChannelToDB(channel) > 0) {
@@ -152,6 +153,34 @@ bool PodcastChannelsModel::addChannel(PodcastChannel *channel)
      }
 }
 
+bool PodcastChannelsModel::addChannelToModel(PodcastChannel *channel)
+{
+         m_channels.append(channel);
+
+         qSort(m_channels.begin(),
+               m_channels.end(),
+               channelsLessThan);
+
+         int index = m_channels.indexOf(channel);
+         beginInsertRows(QModelIndex(), index, index);
+         endInsertRows();
+
+         connect(channel, SIGNAL(channelChanged()),
+                 this, SLOT(onChannelChanged()));
+
+         connect(channel, SIGNAL(sortByChanged(QString)),
+                 this, SLOT(onSortByChanged(QString)));
+
+         connect(channel, SIGNAL(sortDescendingChanged(bool)),
+                 this, SLOT(onSortDescendingChanged(bool)));
+
+         connect(channel, SIGNAL(urlChanged(QString)),
+                 this, SLOT(onUrlChanged(QString)));
+
+         return true;
+}
+
+
 bool PodcastChannelsModel::removeChannel(PodcastChannel *channel)
 {
     if (channel == nullptr) {
@@ -177,6 +206,29 @@ bool PodcastChannelsModel::removeChannel(PodcastChannel *channel)
 
     return false;
 }
+
+ bool PodcastChannelsModel::removeChannelFromModel(PodcastChannel *channel){
+     if (channel == nullptr) {
+         qWarning() << "Channel is NULL.";
+         return false;
+     }
+
+     int dbid = channel->channelDbId();
+
+     // Remove from model
+     for (int i=0; i<m_channels.size(); i++) {
+         PodcastChannel *channel = m_channels.at(i);
+         if (channel->channelDbId() == dbid) {
+             beginRemoveRows(QModelIndex(), i, i);
+             m_channels.removeAt(i);
+             endRemoveRows();
+
+             return true;
+         }
+     }
+
+     return false;
+ }
 
 QList<PodcastChannel *> PodcastChannelsModel::channels()
 {

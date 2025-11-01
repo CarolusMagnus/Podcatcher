@@ -49,7 +49,9 @@ public:
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
     bool addChannel(PodcastChannel *channel);
+    bool addChannelToModel(PodcastChannel *channel);
     bool removeChannel(PodcastChannel *channel);
+    bool removeChannelFromModel(PodcastChannel *channel);
     QList<PodcastChannel *> channels();
 
     PodcastChannel * podcastChannelById(int id);
@@ -70,7 +72,7 @@ private slots:
     void onUrlChanged(QString url);
 
 private:
-    explicit PodcastChannelsModel(QObject *parent = nullptr);  // Do not allow instantiation of this class...
+    explicit PodcastChannelsModel(QObject *parent = nullptr, bool archived=false);  // Do not allow instantiation of this class...
     QList<PodcastChannel *> m_channels;
     PodcastSQLManager *m_sqlmanager;
     QHash<int, QByteArray> m_roles;

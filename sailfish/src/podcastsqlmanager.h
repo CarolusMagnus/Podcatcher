@@ -31,7 +31,7 @@ class PodcastSQLManager : public QObject
 {
     Q_OBJECT
 public:
-    QList<PodcastChannel *> channelsInDB();
+    QList<PodcastChannel *> channelsInDB(bool archived=false);
     PodcastChannel* channelInDB(int channelId, PodcastChannel *channel = nullptr);
 
     QList<PodcastEpisode *> episodesInDB(PodcastChannel* channel);
@@ -49,9 +49,11 @@ public:
     void removeChannelFromDB(int channelId);
     void updateChannelAutoDownloadToDB(bool autoDownloadOn);
     void checkAndCreateAutoDownload(bool autoDownloadOn);
-    void checkAndCreateChannelSortation();
+    void checkAndCreateMissingChannelColumns();
     void checkAndCreateExtendedEpisodeState();
     void migrateChannelLogos();
+
+    QString episodeDescription(PodcastEpisode& episode);
 
 signals:
 

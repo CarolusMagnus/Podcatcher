@@ -24,16 +24,18 @@ import "pages"
 ApplicationWindow
 {
     id: appWindow
-    signal showChannel(string id)
+    signal showChannel(int id)
     signal downloadPodcast(int channelid, int index)
     signal playPodcast(int channelId, int index)
     signal openWeb(int channelId, int index)
     signal refreshEpisodes(int channelId)
     signal cancelDownload(int channelId, int index)
     signal cancelQueue(int channelId, int index)
-    signal deleteChannel(string channelId)
-    signal allListened(string channelId)
-    signal allFinished(string channelId)
+    signal deleteChannel(int channelId)
+    signal archiveChannel(int channelId)
+    signal unarchiveChannel(int channelId)
+    signal allListened(int channelId)
+    signal allFinished(int channelId)
     signal deleteDownloaded(int channelId, int index)
     signal markAsUnplayed(int channelId, int index)
     signal markAsFinished(int channelId, int index)
@@ -42,6 +44,8 @@ ApplicationWindow
     signal autoDownloadChanged(int channelId, bool autoDownload)
     signal addToPlayList(int channelId, int index)
     signal endOfMedium(string name)
+
+
 
     initialPage: Component { MainPage { } }
     //initialPage: player

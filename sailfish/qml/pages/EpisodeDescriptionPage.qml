@@ -54,7 +54,7 @@ Page {
      */
 
     onEpisodeDescriptionTextChanged: {
-        console.log("Loading html: "+episodeDescriptionText);
+        //console.log("Loading html: "+episodeDescriptionText);
         //episodeDescription.loadHtml(style + episodeDescriptionText);
         //console.log(findAllMethods(episodeDescription._webPage));
         //console.log(all_properties(episodeDescription._webPage));

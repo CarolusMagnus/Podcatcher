@@ -45,6 +45,7 @@
 PodcastManager::PodcastManager(QObject *parent) :
     QObject(parent),
     m_channelsModel(new PodcastChannelsModel(this)),
+    m_channelArchiveModel(new PodcastChannelsModel(this, true)),
     m_networkManager(new QNetworkAccessManager(this)),
     m_dlNetworkManager(new QNetworkAccessManager(this)),
     m_episodeModelFactory(PodcastEpisodesModelFactory::episodesFactory()),
@@ -119,6 +120,12 @@ PodcastChannelsModel * PodcastManager::podcastChannelsModel() const
     return m_channelsModel;
 }
 
+
+PodcastChannelsModel * PodcastManager::podcastChannelArchiveModel() const
+{
+    return m_channelArchiveModel;
+}
+
 void PodcastManager::requestPodcastChannel(const QUrl &rssUrl, const QMap<QString, QString> &logoCache)
 {
     qDebug() << "Requesting Podcast channel" << rssUrl;
@@ -138,6 +145,9 @@ void PodcastManager::requestPodcastChannel(const QUrl &rssUrl, const QMap<QStrin
     channel->setUrl(rssUrl.toString());
 
     if (m_channelsModel->channelAlreadyExists(channel)) {
+
+        //TODO: Check archive
+
         qDebug() << "Channel is already in DB. Not doing anything.";
         emit showInfoBanner(tr("Already subscribed to '%1'.").arg(channel->title()));
         delete channel;
@@ -233,7 +243,10 @@ PodcastChannel * PodcastManager::podcastChannel(int id)
     if (!m_channelsCache.contains(id)) {
         channel = m_channelsModel->podcastChannelById(id);
         if (channel == nullptr) {
+            channel = m_channelArchiveModel->podcastChannelById(id);
+            if (!channel){
             return channel;
+            }
         }
         m_channelsCache.insert(id, channel);
     } else {
@@ -282,7 +295,8 @@ void PodcastManager::cancelDownloadPodcast(PodcastEpisode *episode)
         qWarning() << "Canceled episode was not in the queue.";
     }
 
-    PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
+    PodcastChannel *channel = podcastChannel(episode->channelid());
+           //m_channelsModel->podcastChannelById(episode->channelid());
     //channel->setIsDownloading(false);
 
 
@@ -617,7 +631,8 @@ void PodcastManager::onPodcastEpisodeDownloadReady()
         connect(episode, SIGNAL(podcastEpisodeDownloadFailed(PodcastEpisode*)),
                 this, SLOT(onPodcastEpisodeDownloadFailed(PodcastEpisode*)));
 
-        PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
+        PodcastChannel *channel = podcastChannel(episode->channelid());
+                //m_channelsModel->podcastChannelById(episode->channelid());
         channel->setIsDownloading(true);
 
         channel->addCredentials(episode);
@@ -725,7 +740,8 @@ void PodcastManager::onPodcastEpisodeDownloaded(PodcastEpisode *episode)
         m_currentEpisodeDownloads.removeOne(episode);
     }
 
-    PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
+    PodcastChannel *channel = podcastChannel(episode->channelid());
+            //m_channelsModel->podcastChannelById(episode->channelid());
 
     bool otherDownloadfromChannel = false;
 
@@ -777,7 +793,8 @@ void PodcastManager::onPodcastEpisodeDownloadFailed(PodcastEpisode *episode)
     }
 
     //m_isDownloading = false;
-    PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
+    PodcastChannel *channel = podcastChannel(episode->channelid());
+            //m_channelsModel->podcastChannelById(episode->channelid());
     channel->setIsDownloading(otherDownloadfromChannel);
     episode->setState(PodcastEpisode::GetState);
 
@@ -997,8 +1014,24 @@ void PodcastManager::removePodcastChannel(PodcastChannel& channel)
     // Finally delete the memory reserved for the channel
     delete channel;
     */
-
 }
+
+void PodcastManager::movePodcastChannel(PodcastChannel& channel, bool toArchive)
+{
+
+    if (toArchive){
+        m_channelsModel->removeChannelFromModel(&channel);
+        m_channelArchiveModel->addChannelToModel(&channel);
+        channel.setArchived(true);
+        m_channelArchiveModel->updateChannel(&channel);
+    }else{
+        m_channelArchiveModel->removeChannelFromModel(&channel);
+        m_channelsModel->addChannelToModel(&channel);
+        channel.setArchived(false);
+        m_channelsModel->updateChannel(&channel);
+    }
+}
+
 
 void PodcastManager::deleteAllDownloadedPodcasts(PodcastChannel& channel)
 {

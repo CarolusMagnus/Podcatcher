@@ -270,3 +270,14 @@ void PodcastChannel::setHasNew(bool newHasNew)
     m_hasNew = newHasNew;
     emit channelChanged();
 }
+
+bool PodcastChannel::archived() const
+{
+    return m_archived;
+}
+
+void PodcastChannel::setArchived(bool newArchived)
+{
+    m_archived = newArchived;
+    emit channelChanged();
+}

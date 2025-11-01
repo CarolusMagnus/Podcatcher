@@ -44,6 +44,7 @@ class PodcastChannel : public QObject
     Q_PROPERTY(bool sortDescending READ sortDescending WRITE setSortDescending NOTIFY sortDescendingChanged)
     Q_PROPERTY(QString url READ url NOTIFY urlChanged)
     Q_PROPERTY(bool hasNew READ hasNew WRITE setHasNew)
+    Q_PROPERTY(bool archived READ archived WRITE setArchived)
 
 
 public:
@@ -100,6 +101,9 @@ public:
     bool hasNew() const;
     void setHasNew(bool newHasNew);
 
+    bool archived() const;
+    void setArchived(bool newArchived);
+
 signals:
     void channelChanged();
     void downloadingChanged();
@@ -138,6 +142,7 @@ private:
 
     QByteArray m_xml;
     bool m_hasNew;
+    bool m_archived;
 };
 
 #endif // PODCASTSTREAM_H

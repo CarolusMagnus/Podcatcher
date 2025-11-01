@@ -13,6 +13,45 @@
     </message>
 </context>
 <context>
+    <name>ArchivePage</name>
+    <message>
+        <source>No podcasts archived</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Archive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation>Обновить</translation>
+    </message>
+    <message>
+        <source>Mark all podcasts as played</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove subscription</source>
+        <translation>Удалить подписку</translation>
+    </message>
+    <message>
+        <source>Removing</source>
+        <translation>Удаление</translation>
+    </message>
+    <message>
+        <source>Fetching channel information...</source>
+        <translation>Получение информации о каналах...</translation>
+    </message>
+    <message>
+        <source>Remove from archive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unarchiving</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AudioPlayer</name>
     <message>
         <source>Player</source>
@@ -234,6 +273,18 @@
     <message>
         <source>Refresh</source>
         <translation>Обновить</translation>
+    </message>
+    <message>
+        <source>Move to archive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Archiving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Archive</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

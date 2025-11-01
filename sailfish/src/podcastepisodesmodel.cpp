@@ -87,7 +87,8 @@ QVariant PodcastEpisodesModel::data(const QModelIndex &index, int role) const
         return episode->dbid();
 
     case DescriptionRole:
-        return episode->description();
+        return m_sqlmanager->episodeDescription(*episode);
+    //return episode->description();
 
     case StateRole:
         return episode->episodeState();

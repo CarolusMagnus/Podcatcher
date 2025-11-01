@@ -132,7 +132,7 @@ bool PodcastSQLManager::isChannelInDB(PodcastChannel *channel)
     return false;
 }
 
-QList<PodcastChannel *> PodcastSQLManager::channelsInDB()
+QList<PodcastChannel *> PodcastSQLManager::channelsInDB(bool archived)
 {
     mutex.lock();
     QSqlQuery q(m_connection);
@@ -145,7 +145,9 @@ QList<PodcastChannel *> PodcastSQLManager::channelsInDB()
     q.prepare("SELECT id, title, description, logo, rssurl, "
               "(SELECT COUNT(id) FROM episodes WHERE episodes.channelid = channels.id AND episodes.lastPlayed = 0 AND episodes.playLocation <> ''), "
               "autoDownloadOn, sortby, sortdescending "
-              "FROM channels ORDER BY channels.title");
+              "FROM channels WHERE archived=:archived"
+              " ORDER BY channels.title");
+    q.bindValue(":archived", archived);
 
     if (!q.exec()) {
         qWarning() << "SQL error:" << q.lastError();
@@ -163,6 +165,7 @@ QList<PodcastChannel *> PodcastSQLManager::channelsInDB()
         channel->setAutoDownloadOn(q.value(6).toBool());
         channel->setSortBy(q.value(7).toString());
         channel->setSortDescending(q.value(8).toBool());
+        channel->setArchived(archived);
 
         channels.append(channel);
     }
@@ -180,7 +183,7 @@ PodcastChannel * PodcastSQLManager::channelInDB(int channelId, PodcastChannel *c
 
     q.prepare("SELECT title, description, logo, rssurl, "
               "(SELECT COUNT(id) FROM episodes WHERE episodes.channelid = channels.id AND episodes.lastPlayed = 0 AND episodes.playLocation <> ''), "
-              "autoDownloadOn, sortby, sortdescending "
+              "autoDownloadOn, sortby, sortdescending, archived "
               "FROM channels WHERE channels.id = :id");
     q.bindValue(":id", channelId);
     q.exec();
@@ -202,6 +205,7 @@ PodcastChannel * PodcastSQLManager::channelInDB(int channelId, PodcastChannel *c
     channel->setAutoDownloadOn(q.value(5).toBool());
     channel->setSortBy(q.value(6).toString());
     channel->setSortDescending(q.value(7).toBool());
+    channel->setArchived(q.value(8).toBool());
 
     return channel;
 }
@@ -329,7 +333,7 @@ QList<PodcastEpisode *> PodcastSQLManager::episodesInDB(PodcastChannel* channel)
         episode->setTitle(q.value(1).toString());
         episode->setDownloadLink(q.value(2).toString());
         episode->setPlayFilename(q.value(3).toString());
-        episode->setDescription(q.value(4).toString());
+//      episode->setDescription(q.value(4).toString());
         episode->setPubTime(QDateTime::fromTime_t(q.value(5).toUInt()));
         episode->setDuration(q.value(6).toString());
         episode->setDownloadSize(q.value(7).toInt());
@@ -387,16 +391,19 @@ bool PodcastSQLManager::updateChannelInDB(PodcastChannel *channel) {
     QSqlQuery q(m_connection);
     mutex.unlock();
 
-    q.prepare("UPDATE channels SET title=:title, description=:description, logo=:logo, rssurl=:rssurl, autoDownloadOn=:autoDownloadOn, sortby=:sortBy, sortdescending=:sortDescending "
+    q.prepare(/*"UPDATE channels SET title=:title, description=:description, logo=:logo, rssurl=:rssurl, autoDownloadOn=:autoDownloadOn, sortby=:sortBy, sortdescending=:sortDescending, "*/
+              "UPDATE channels SET title=:title, logo=:logo, rssurl=:rssurl, autoDownloadOn=:autoDownloadOn, sortby=:sortBy, sortdescending=:sortDescending, "
+              "archived=:archived "
               "WHERE id=:id");
     q.bindValue(":title", channel->title());
-    q.bindValue(":description", channel->description());
+//    q.bindValue(":description", channel->description());
     q.bindValue(":logo", channel->logo());
     q.bindValue(":rssurl", channel->url());
     q.bindValue(":autoDownloadOn", channel->isAutoDownloadOn());
     q.bindValue(":id", channel->channelDbId());
     q.bindValue(":sortBy", channel->sortBy());
     q.bindValue(":sortDescending", channel->sortDescending());
+    q.bindValue(":archived", channel->archived());
 
     if (!q.exec()) {
         qDebug() << "Last query: " << q.lastQuery();
@@ -523,7 +530,7 @@ void PodcastSQLManager::createTables()
 
     }
     else {
-        checkAndCreateChannelSortation();
+        checkAndCreateMissingChannelColumns();
     }
 
     // If database does not contain the table "episodes", so crate it.
@@ -653,6 +660,32 @@ void PodcastSQLManager::migrateChannelLogos()
     }
 }
 
+QString PodcastSQLManager::episodeDescription(PodcastEpisode &episode)
+{
+    mutex.lock();
+    QSqlQuery q(m_connection);
+    mutex.unlock();
+
+
+    qDebug() << "Returning episode description for " << episode.title();
+
+    q.prepare("SELECT description "
+              "FROM episodes WHERE id = :id");
+    q.bindValue(":id", episode.dbid());
+
+    if (!q.exec()) {
+        qWarning() << "SQL error:" << q.lastError();
+        qWarning() << "Last query: " << q.lastQuery();
+    }
+
+
+    if (q.next()){
+        return q.value(0).toString();
+    }else{
+        throw std::runtime_error("Could not retrieve episode description from database!");
+    }
+}
+
 
 
 void PodcastSQLManager::checkAndCreateAutoDownload(bool autoDownload)
@@ -695,7 +728,7 @@ void PodcastSQLManager::checkAndCreateAutoDownload(bool autoDownload)
 
 }
 
-void PodcastSQLManager::checkAndCreateChannelSortation()
+void PodcastSQLManager::checkAndCreateMissingChannelColumns()
 {
     QSqlQuery q(m_connection);
 
@@ -718,6 +751,18 @@ void PodcastSQLManager::checkAndCreateChannelSortation()
 
         // Column does not exist. Create it.
         if (!q_create.exec("ALTER TABLE channels ADD COLUMN sortdescending BOOLEAN DEFAULT true ")) {
+            qDebug()   << "SQL error: " <<  q_create.lastError().text();
+            qWarning() << "SQL query:"  <<  q_create.lastQuery();
+        }
+    }
+
+    if (!q.exec("SELECT archived FROM channels")) {
+        qDebug() << "SQL: channels does not contain 'archived'. Adding column.";
+
+        QSqlQuery q_create(m_connection);
+
+        // Column does not exist. Create it.
+        if (!q_create.exec("ALTER TABLE channels ADD COLUMN archived BOOLEAN DEFAULT false ")) {
             qDebug()   << "SQL error: " <<  q_create.lastError().text();
             qWarning() << "SQL query:"  <<  q_create.lastQuery();
         }

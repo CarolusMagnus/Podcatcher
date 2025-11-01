@@ -198,6 +198,7 @@ DISTFILES += \
     qml/pages/ImportFromGPodder.qml \
     qml/pages/About.qml \
     qml/pages/Settings.qml \
+    qml/pages/ArchivePage.qml \
     qml/pages/URLEditDialog.qml \
     qml/pages/JSONListModel.qml \
     qml/pages/jsonpath.js \
