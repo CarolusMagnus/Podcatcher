@@ -598,6 +598,12 @@ void PodcastManager::onPodcastEpisodesParsed()
         PodcastEpisodesModel *episodeModel = m_episodeModelFactory->episodesModel(*channel);  // FIXME: Pass only channel to episodes model - not the DB id.
         episodeModel->addEpisodes(*parsedEpisodes);
 
+
+        qDebug() << "Clearing XML data from channel " << channel->title();
+        channel->xml().clear();
+        channel->xml().squeeze();
+
+
         qDebug() << "Downloading automatically new episodes:" << m_autodownloadOnSettings << " WiFi:" << PodcastManager::isConnectedToWiFi();
 
         // Automatically download new episodes in the channel if

@@ -64,6 +64,10 @@ bool PodcastRSSParser2::populateChannelFromChannelXML(PodcastChannel *channel, c
 
     channel->dumpInfo();
 
+    channel->xml().clear();
+    channel->xml().squeeze();
+    qDebug() << "Cleared XML data from channel " << channel->title();
+
     return true;
 
 }
