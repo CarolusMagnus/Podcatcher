@@ -429,14 +429,15 @@ void PodcastSQLManager::updatePodcastInDB(PodcastEpisode *episode)
     QSqlQuery q(m_connection);
     mutex.unlock();
 
-    q.prepare("UPDATE episodes SET title=:title, downloadLink=:downloadLink, playLocation=:playLocation, description=:description, "
+    q.prepare(//"UPDATE episodes SET title=:title, downloadLink=:downloadLink, playLocation=:playLocation, description=:description, "
+              "UPDATE episodes SET title=:title, downloadLink=:downloadLink, playLocation=:playLocation,"
               "published=:published, duration=:duration, downloadSize=:downloadSize, lastPlayed=:lastPlayed, hasBeenCanceled=:hasBeenCanceled, "
               "finished=:finished, playPosition=:playPosition "
               "WHERE id=:id");
     q.bindValue(":title", episode->title());
     q.bindValue(":downloadLink", episode->downloadLink());
     q.bindValue(":playLocation", episode->playFilename());
-    q.bindValue(":description", episode->description());
+    //q.bindValue(":description", episode->description());
     q.bindValue(":published", episode->pubTime().toTime_t());  // NOTE: We save the seconds since EPOC for easier handling.
     q.bindValue(":duration", episode->duration());
     q.bindValue(":downloadSize", episode->downloadSize());
