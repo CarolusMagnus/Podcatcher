@@ -58,6 +58,8 @@ public:
 
     explicit PodcastEpisode(QObject *parent = nullptr);
 
+    ~PodcastEpisode();
+
     void downloadEpisode();
 
     void setDbId(int id);

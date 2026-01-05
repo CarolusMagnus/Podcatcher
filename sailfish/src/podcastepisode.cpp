@@ -1,4 +1,4 @@
-/**
+﻿/**
  * This file is part of Podcatcher for Sailfish OS.
  * Author: Johan Paul (johan.paul@gmail.com)
  *
@@ -44,8 +44,13 @@ PodcastEpisode::PodcastEpisode(QObject *parent) :
     m_new = false;
     m_finished = false;
 
-    m_saveOnSDCOnf = new MGConfItem("/apps/ControlPanel/Podcatcher/saveOnSDCard", this);
+    //m_saveOnSDCOnf = new MGConfItem("/apps/ControlPanel/Podcatcher/saveOnSDCard", this);
 
+}
+
+PodcastEpisode::~PodcastEpisode()
+{
+    qDebug() << "Destructing episode "<< this->m_title << " from " << (this->channel() ? this->channel()->title() : "unknown channel");
 }
 
 void PodcastEpisode::setTitle(const QString &title)
@@ -303,7 +308,14 @@ void PodcastEpisode::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 void PodcastEpisode::onDownloadReadyRead()
 {
     if (m_downloadFile){
-        m_downloadFile->write(m_currentDownload->readAll());
+        qint64 written = m_downloadFile->write(m_currentDownload->readAll());
+
+        if (written == -1){
+            m_errorMessage = m_downloadFile->errorString();
+            m_currentDownload->abort();
+            emit podcastEpisodeDownloadFailed(this);
+        }
+
     }
     //qDebug() << "Write received bytes.";
 }
@@ -591,7 +603,10 @@ bool PodcastEpisode::isValidAudiofile(QNetworkReply *reply) const
 
 QString PodcastEpisode::getDownloadDir()
 {
-    if(!m_saveOnSDCOnf->value().toBool())
+//if(!m_saveOnSDCOnf->value().toBool())
+    auto conf = MGConfItem("/apps/ControlPanel/Podcatcher/saveOnSDCard", this);
+
+    if (!conf.value().toBool())
         return PODCATCHER_PODCAST_DLDIR;
     else {
         QString sd = getSDPath();
