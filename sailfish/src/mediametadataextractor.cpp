@@ -156,6 +156,16 @@ void MediaMetaDataExtractor::inspectMP3(const QString& url)
                 chap.name = titleFrame->fieldList().toString("|").toCString(true);
             }
 
+            efl = cf->embeddedFrameListMap()["APIC"];
+
+            if(!efl.isEmpty()){
+                auto * pictureFrame = dynamic_cast<ID3v2::AttachedPictureFrame *> (efl.front());
+                qDebug() <<"MIME type of frame "<< pictureFrame->mimeType().toCString();
+                chap.picture.loadFromData((const uchar*) pictureFrame->picture().data(), pictureFrame->picture().size());
+            } else{
+                chap.picture = m_cover;
+            }
+
             m_chapters << chap;
         }
 
@@ -263,6 +273,7 @@ void MediaMetaDataExtractor::parseXiphComments(TagLib::Ogg::XiphComment *tag)
             }
 
             chap.start = seconds*1000+minutes*60*1000+ hours*60*60*1000;
+            chap.picture = m_cover;
 
             m_chapters << chap;
 
@@ -288,10 +299,45 @@ QList<PodcastChapter> *MediaMetaDataExtractor::chapters()
 
 QImage CoverImageProvider::requestImage(const QString &id, QSize *size, const QSize &requestedSize)
 {
+    qDebug() << "Image " << id << "requested";
+
+    if (id == "cover"){
+
     QImage cover = m_mmde.getCover();
     size->setHeight(cover.size().height());
     size->setWidth(cover.size().width());
     return cover;
+    } else if (id.startsWith("chapter_")){
+        QStringList parts = id.split("_");
+
+        if (parts.length() != 2){
+            qWarning() << "invalid chapter index"  << id;
+
+            return QImage();
+        }
+
+        bool ok;
+        int index = parts[1].toInt(&ok);
+
+        if (ok && index >= 0){
+            QImage pic = m_mmde.chapters()->at(index).picture;
+
+            if (pic.isNull())
+                pic = m_mmde.getCover();
+
+            size->setHeight(pic.size().height());
+            size->setWidth(pic.size().width());
+            return pic;
+        }else {
+            qWarning() << "invalid chapter index"  << id;
+
+            return QImage();
+        }
+
+    }
+    else {
+        return QImage();
+    }
 }
 
 PodcastChapterModel::PodcastChapterModel(QObject *parent):
@@ -359,3 +405,40 @@ void PodcastChapterModel::onChaptersChanged(QList<PodcastChapter> *chapters)
     setChapters(chapters);
 }
 
+
+int PodcastChapterModel::currentChapter() const
+{
+    return m_currentChapter;
+}
+
+int PodcastChapterModel::position() const
+{
+    return m_position;
+}
+
+void PodcastChapterModel::setPosition(int newPosition)
+{
+    m_position = newPosition;
+    updateCurrentChapter();
+
+}
+
+void PodcastChapterModel::updateCurrentChapter()
+{
+    m_currentChapter = -1;
+
+    for (int i=0; i < m_chapters->length(); i++){
+        if (m_chapters->at(i).start >= m_position){
+
+            if (i != m_currentChapter){
+                m_currentChapter = i;
+                emit currentChapterChanged();
+            }
+
+            qDebug() << m_position << "corresponds to chapter" << i;
+
+            break;
+        }
+    }
+
+}

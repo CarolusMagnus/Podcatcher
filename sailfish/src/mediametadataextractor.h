@@ -29,6 +29,10 @@ public:
 class PodcastChapterModel: public QAbstractListModel{
     Q_OBJECT
 
+    int m_currentChapter;
+
+    int m_position;
+
 public:
 
     PodcastChapterModel(QObject *parent = Q_NULLPTR);
@@ -47,6 +51,9 @@ public:
 
     Q_PROPERTY(int count READ count NOTIFY countChanged)
 
+    Q_PROPERTY(int currentChapter READ currentChapter NOTIFY currentChapterChanged)
+    Q_PROPERTY(int position READ position WRITE setPosition)
+
     void setChapters(QList<PodcastChapter>* chapters);
 
     int count() const
@@ -54,14 +61,22 @@ public:
         return m_chapters->count();
     }
 
+    int currentChapter() const;
+
+    int position() const;
+    void setPosition(int newPosition);
+
 protected:
      QHash<int, QByteArray> m_roleNames;
      QList<PodcastChapter>* m_chapters{};
+
+     void updateCurrentChapter();
 
 public slots:
      void onChaptersChanged(QList<PodcastChapter>* chapters);
 signals:
      void countChanged(int count);
+     void currentChapterChanged();
 };
 
 class MediaMetaDataExtractor : public QObject

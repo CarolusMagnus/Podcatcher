@@ -300,16 +300,27 @@ Page {
             delegate: ListItem{
                 id: chapterItem
                 width: parent.width
-                contentHeight: chapTitleLabel.height +Theme.paddingMedium
-                Label{
+                contentHeight: Math.max(chapTitleLabel.height+Theme.paddingMedium, chapImage.height)
+                Image {
+                    id: chapImage
+                    source: "image://coverArt/chapter_"+index
+                    width: Theme.itemSizeSmall
+                    height: Theme.itemSizeSmall
+                    fillMode: Image.PreserveAspectFit
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                Text{
                     id: chapTitleLabel
                     anchors.leftMargin: Theme.horizontalPageMargin
                     anchors.rightMargin: Theme.horizontalPageMargin
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.left: parent.left
+                    anchors.left: chapImage.right
                     anchors.right: parent.right
                     text: title
                     color: chapterItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeMedium
                     height: Text.paintedHeight
                     wrapMode: Text.WordWrap
                 }
@@ -392,6 +403,10 @@ Page {
             */
         }
 
+        onPositionChanged: {
+            chapterModel.position=audioPlayer.position;
+        }
+
         onSourceChanged: {
             mediaMetaDataExtractor.inspect(source);
             console.log("Last position key: "+lastPosition.key);
@@ -471,7 +486,7 @@ Page {
         canSeek: false
         hasTrackList: false
         playbackStatus: Mpris.Paused
-        loopStatus: Mpris.LoopNone//Mpris.None
+        loopStatus: Mpris.LoopNone//Mpris.Nonemax
         shuffle: false
         volume: 1.0
         onPauseRequested: {
@@ -516,6 +531,22 @@ Page {
             Mpris.metaData.title = mediaMetaDataExtractor.title;
 
         }
+    }
+
+Component.onCompleted: {
+    chapterModel.onCurrentChapterChanged.connect(function() {
+            console.log("Current chapter changed!");
+            var index = chapterModel.currentChapter;
+
+            if (index === -1){
+                cover.source = 'image://coverArt/cover';
+                console.log("Resetting current cover to episode cover");
+            }else{
+                cover.source = 'image://coverArt/chapter_'+index;
+                console.log("Setting current cover to chapter picture "+index);
+            }
+
+        })
     }
 
 }

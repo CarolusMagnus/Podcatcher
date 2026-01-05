@@ -24,6 +24,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QFile>
+#include <QImage>
 
 #include <MGConfItem>
 
@@ -36,6 +37,7 @@ struct PodcastChapter{
     QString description;
     int start{};
     QString url;
+    QImage picture;
 };
 
 class PodcastChannel;
